@@ -1,0 +1,23 @@
+var proxy = require('express-http-proxy');
+var app = require('express')();
+
+var API_HOST = process.env.API_HOST || 'localhost:3000';
+var PORT = process.env.SERVER_PORT || 80;
+
+//app.use('/proxy', proxy('www.google.com'));
+
+//app.use('/', proxy('localhost:3000'));
+
+// Proxy all the api requests
+app.all('/hsl/', function (req, res) {
+         apiProxy.web(req, res, { target: 'http://google.com' })
+});
+
+// Proxy all the api requests
+app.all('/', function (req, res) {
+    apiProxy.web(req, res, { target: 'http://' + API_HOST })
+});
+
+app.listen(PORT);
+
+console.log('Running on port' + PORT + ' with API_HOST:'+API_HOST);
