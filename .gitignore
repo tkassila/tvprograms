@@ -51,6 +51,11 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+telkkuprogserver/*
+build/*
+koe*.txt
+koe*.html
+
 # Yarn Integrity file
 .yarn-integrity
 
