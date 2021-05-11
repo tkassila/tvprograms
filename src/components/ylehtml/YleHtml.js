@@ -3,7 +3,7 @@ import Card from 'preact-material-components/Card';
 import 'preact-material-components/Card/style.css';
 import Button from 'preact-material-components/Button';
 import Formfield from 'preact-material-components/FormField';
-import Checkbox from 'preact-material-components/Checkbox';
+//import Checkbox from 'preact-material-components/Checkbox';
 import 'preact-material-components/Button/style.css';
 import Select from 'preact-material-components/Select';
 import 'preact-material-components/List/style.css';
@@ -21,6 +21,8 @@ import 'preact-material-components/Select/style.css';
 import TextField from 'preact-material-components/TextField';
 import 'preact-material-components/TextField/style.css';
 // import 'preact-material-components/Theme/style.css';
+
+import Checkbox from '../checkbox/CheckBox';
 
 import AbortController from "abort-controller";
 import style from './style';
@@ -1892,9 +1894,10 @@ export default class YleHtml extends Component {
 		{
 			console.log("searchTextFromChannelsClicked 2 ");
 		}
-		let value = this.showAllDescrRef.current.MDComponent.checked;
+		let currcntl = this.showAllDescrRef.current;
+		let value = currcntl.checked;
 		if (!value)
-			this.showAllDescrRef.current.MDComponent.checked = true;
+			currcntl.checked = true;
 				
 		// this.filterWhenUIControlsHasBeenChanged(filtercalled.MAKESEARCH, true);
 		let foundedschedules = this.filterAfterSearch(true);
@@ -2112,8 +2115,6 @@ export default class YleHtml extends Component {
 							<Radio tabIndex="0" id="rtv" name='opttv' checked={state.progsource === 'rtv'}
 								onChange={this.radioProgSourceChanged} ></Radio>
 							<label for="rtv">TV</label>
-						</FormField>
-						<FormField>
 							<Radio tabIndex="0" id="rradio" name='opttv' checked={state.progsource === 'rradio'}
 								onChange={this.radioProgSourceChanged}></Radio>
 							<label for="rradio">Radio</label>
@@ -2202,19 +2203,16 @@ export default class YleHtml extends Component {
 					</Formfield>
 
 					<Formfield>
-						<Checkbox tabIndex="0" id="checkshowdescribtions"
-							onChange={this.showAllDescriptions}
+						<Checkbox tabIndex="0" inputid="checkshowdescribtions"
+						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions}
+							onChange={this.showAllDescriptions} 
 							ref={this.showAllDescrRef} />
-						<label for="checkshowdescribtions" id="checkshowdescribtions-label">
-							Näytä selitykset</label>
 					</Formfield>
 					<Formfield>
-						<Checkbox primary tabIndex="0" id="checkshowonechannel" onChange={this.showOneChannel}
+						<Checkbox tabIndex="0" onChange={this.showOneChannel}
+							inputid="checkshowonechannel"
+							labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime}
 							ref={this.showOneChannelRef} />
-						<label for="checkshowonechannel" id="checkshowonechannel-label">Näytä yksi kanava</label>
-					</Formfield>
-					<space>          </space>
-					<Formfield>
 					<select tabIndex="0"
 							selectedIndex={selectedchannelindex}
                             disabled={!state.bCheckShowChannelsAtSameTime}
@@ -2245,17 +2243,14 @@ export default class YleHtml extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<label for="idsearchvalue">
-						Etsi tekstiä ohjelmista: </label>
-						<input tabIndex="0" id="idsearchvalue" type="text"
+						<label for="idsearchvalue">Etsi tekstiä ohjelmista:</label>
+						<input type="text" tabIndex="0" id="idsearchvalue" 
 						disabled={this.store.getState().schedules == null || state.bUnderFetch}
 						onKeyUp={this.textFieldSearchChanged}
 						onFocus={this.onFocusTextField}
 						onBlur={this.onBlurTextField}
 						ref={this.textFieldSearchRef} />
-					</Formfield>
 					<space>          </space>
-					<Formfield>
 						<Button tabIndex="0" lang="fi" aria-label="hae" ripple raised 
 							disabled={state.schedules == null || state.bUnderFetch}
 								onClick={this.searchTextFromChannelsClicked}>
@@ -2264,23 +2259,21 @@ export default class YleHtml extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<Checkbox tabIndex="0" id="checkTableBorders"
+						<Checkbox tabIndex="0" inputid="checkTableBorders"
+						labeltext="Näytä taulun raamit" checked={state.bShowTableBorder}
 							onChange={this.showTableBorders}
 							ref={this.showTableBordersRef} />
-							<label for="checkTableBorders" id="checkshowdescribtions-label">
-							Näytä taulun raamit</label>
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<Checkbox tabIndex="0" id="checkshowonlymovies"
+						<Checkbox tabIndex="0" inputid="checkshowonlymovies"
+						labeltext="Näytä elokuvat" 
 							disabled={state.progsource != 'rtv'}
 							onChange={this.showOnlyMovies}
 							ref={this.checkBoxMovieRef}
 							checked={state.progsource != 'rtv' && state.bShowOnlyMovies 
 							  || state.progsource == 'rtv' && state.bShowOnlyMovies}
 							 />
-						<label for="checkshowonlymovies" id="checkshowonlymovies-label">
-							Näytä elokuvat</label>
 					</Formfield>
 					<space>          </space>
 					<Formfield>

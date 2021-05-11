@@ -11,7 +11,7 @@ import Select from 'preact-material-components/Select';
 import 'preact-material-components/List/style.css';
 import 'preact-material-components/Menu/style.css';
 import 'preact-material-components/Select/style.css';
-import Checkbox from 'preact-material-components/Checkbox';
+// import Checkbox from 'preact-material-components/Checkbox';
 import Formfield from 'preact-material-components/FormField';
 import Button from 'preact-material-components/Button';
 import 'preact-material-components/Button/style.css';
@@ -24,6 +24,8 @@ import AmppariChannel from './AmppariChannel';
 import ChannelTypes from './ChannelTypes';
 import ProgramTypes from './ProgramTypes';
 import SearchPrograms from './SearchPrograms';
+import Checkbox from '../checkbox/CheckBox';
+
 // import store from '../../utils/store';
 
 String.prototype.indexOfRegex = function(regex, fromIndex){
@@ -2540,9 +2542,9 @@ export default class Amppari extends Component {
 
 	setDisplayAllDescriptionsTrue= (textSearch) =>
 	{
-		let value = this.showAllDescrRef.current.MDComponent.checked;
+		let value = this.showAllDescrRef.current.checked;
 		if (!value)
-			this.showAllDescrRef.current.MDComponent.checked = true;
+			this.showAllDescrRef.current.checked = true;
 			/*
 		this.setState({ bDisplayAllDescriptions: true, 
 			bSearchButtonClicked: textSearch !== undefined || textSearch !== null 
@@ -2918,20 +2920,16 @@ export default class Amppari extends Component {
 						</Formfield>
 
 						<Formfield>
-						<Checkbox id="checkshowdescribtions"
-							onChange={this.showAllDescriptions}
-							ref={this.showAllDescrRef} />
-							<label for="checkshowdescribtions" id="checkshowdescribtions-label">
-							Näytä selitykset</label>
+						<Checkbox onChange={this.showAllDescriptions}
+							ref={this.showAllDescrRef}
+							inputid="checkshowdescribtions"
+						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 						</Formfield>
-
 						<Formfield>
-						<Checkbox id="checkshowonechannel" onChange={this.showOneChannel}
-							ref={this.showOneChannelRef} />
-							<label for="checkshowonechannel" id="checkshowonechannel-label">Näytä yksi kanava</label>
-						</Formfield>
-						<space>          </space>
-						<Formfield>
+						<Checkbox onChange={this.showOneChannel}
+							ref={this.showOneChannelRef}
+							inputid="checkshowonechannel"
+						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
 						<select tabIndex="0" 
 								selectedIndex={selectedchannelindex}
 								disabled={!state.bCheckShowChannelsAtSameTime}
@@ -2968,13 +2966,11 @@ export default class Amppari extends Component {
 						ref={this.searchProgramRef}	/>
 					<space>          </space>
 					<Formfield>
-						<Checkbox id="checkTableBorders"
-							onChange={this.showTableBorders}
-							ref={this.showTableBordersRef} />
-							<label for="checkTableBorders" id="checkshowdescribtions-label">
-							Näytä taulun raamit</label>
+						<Checkbox onChange={this.showTableBorders}
+							ref={this.showTableBordersRef}							
+							inputid="checkTableBorders"
+						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
 					</Formfield>
-
 					  <ProgramTypes disabled={state.fetcheditems == null 
 						|| state.fetcheditems.length == 0} store={this.store}
 						ref={this.programTypeRef} setRemoverFunction={this.setRemoverFunction} /> 

@@ -4,9 +4,9 @@ import 'preact-material-components/Card/style.css';
 import LayoutGrid from 'preact-material-components/LayoutGrid';
 import 'preact-material-components/LayoutGrid/style.css';
 import 'preact-material-components/Button/style.css';
-import Checkbox from 'preact-material-components/Checkbox';
+//import Checkbox from 'preact-material-components/Checkbox';
 import Formfield from 'preact-material-components/FormField';
-import 'preact-material-components/Checkbox/style.css';
+// import 'preact-material-components/Checkbox/style.css';
 import Select from 'preact-material-components/Select';
 import 'preact-material-components/List/style.css';
 import 'preact-material-components/Menu/style.css';
@@ -19,6 +19,8 @@ import 'preact-material-components/Button/style.css';
 import Dialog from 'preact-material-components/Dialog';
 import 'preact-material-components/Dialog/style.css';
 import 'preact-material-components/Theme/style.css';
+
+import Checkbox from '../checkbox/CheckBox';
 
 import AbortController from "abort-controller";
 import style from './style';
@@ -855,9 +857,9 @@ export default class Telkku extends Component {
 		{
 			console.log("searchTextFromChannelsClicked 2 ");
 		}
-		let value = this.showAllDescrRef.current.MDComponent.checked;
+		let value = this.showAllDescrRef.current.checked;
 		if (!value)
-			this.showAllDescrRef.current.MDComponent.checked = true;
+			this.showAllDescrRef.current.checked = true;
 		this.setState({ bSearchButtonClicked: true,
 			bDisplayAllDescriptions: true});
 		this.forceUpdate();
@@ -1182,19 +1184,16 @@ export default class Telkku extends Component {
 					</Formfield>
 
 					<Formfield>
-						<Checkbox tabIndex="0" id="checkshowdescribtions"
-							onChange={this.showAllDescriptions}
-							ref={this.showAllDescrRef} />
-						<label for="checkshowdescribtions" id="checkshowdescribtions-label">
-							Näytä selitykset</label>
+						<Checkbox tabIndex="0" onChange={this.showAllDescriptions}
+							ref={this.showAllDescrRef}
+							inputid="checkshowdescribtions"
+						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 					</Formfield>
 					<Formfield>
-						<Checkbox tabIndex="0" id="checkshowonechannel" onChange={this.showOneChannel}
-							ref={this.showOneChannelRef} />
-						<label for="checkshowonechannel" id="checkshowonechannel-label">Näytä yksi kanava</label>
-					</Formfield>
-					<space>          </space>
-					<Formfield>
+						<Checkbox tabIndex="0" onChange={this.showOneChannel}
+							ref={this.showOneChannelRef}
+							inputid="checkshowonechannel"
+						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
 					<select tabIndex="0"
 							selectedIndex={this.state.selectedchannelindex}
                             disabled={state.showChannelsAtSameTime !== 1}
@@ -1225,13 +1224,12 @@ export default class Telkku extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<input type="text" tabIndex="0" outlined label="Etsi tekstiä ohjelmista"
+					<label for="idsearchvalue">Etsi tekstiä ohjelmista:</label>
+						<input id="idsearchvalue" type="text" tabIndex="0" outlined
 						disabled={state.channels == null || state.bUnderFetch}
 						onKeyUp={this.textFieldSearchChanged}
 						style = { ' width: 90%;' }  />
-					</Formfield>
 					<space>          </space>
-					<Formfield>
 						<Button tabIndex="0" ripple raised 
 							disabled={state.channels == null || state.bUnderFetch}
 								onClick={this.searchTextFromChannelsClicked}>
@@ -1255,11 +1253,10 @@ export default class Telkku extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<Checkbox tabIndex="0" id="checkTableBorders"
-							onChange={this.showTableBorders}
-							ref={this.showTableBordersRef} />
-							<label for="checkTableBorders" id="checkTableBorders-label">
-							Näytä taulun raamit</label>
+						<Checkbox tabIndex="0" onChange={this.showTableBorders}
+							ref={this.showTableBordersRef}
+							inputid="checkTableBorders"
+						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
 					</Formfield>
 					<space>          </space>
 					<Formfield>

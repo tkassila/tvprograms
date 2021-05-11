@@ -5,7 +5,7 @@ import Config from '../../utils/Config';
 import Select from 'preact-material-components/Select';
 import 'preact-material-components/List/style.css';
 import 'preact-material-components/Menu/style.css';
-import 'preact-material-components/Select/style.css';
+// import 'preact-material-components/Select/style.css';
 import Formfield from 'preact-material-components/FormField';
 import 'preact-material-components/Theme/style.css';
 
@@ -257,8 +257,8 @@ export default class ProgramTypes extends Component {
 		return (
 			
                 <Formfield>
-					<div class={style.cardHeader}>Ohjelmatyyppi<space>     </space>
-					  <select tabIndex="0" 
+					<div class={style.cardHeader}>
+					<label for="idprogramtype">Ohjelmatyyppi:</label> <select tabIndex="0" id="idprogramtype"
 				    		selectedIndex={this.state.selectedTyyppiinindex}
 							preselected outlined 
 							onChange={(e)=>{

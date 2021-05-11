@@ -440,13 +440,12 @@ export default class SearchPrograms extends Component {
 		return (
 			<Fragment>
 					<Formfield>
-						<input type="text" tabIndex="0" outlined label="Etsi tekstiä ohjelmista"
+					<label for="idsearchvalue">Etsi tekstiä ohjelmista:</label>
+						<input type="text" tabIndex="0" id="idsearchvalue"
 							disabled={state.disabled}
 							onKeyUp={this.textFieldSearchChanged}
 							style = { ' width: 90%;' }  />
-					</Formfield>
 					<space>          </space>
-					<Formfield>
 						<Button tabIndex="0" ripple raised tabIndex="0" 
 								disabled={state.disabled}
 								onClick={this.searchTextFromChannelsClicked}>

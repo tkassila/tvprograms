@@ -250,8 +250,9 @@ export default class ChannelTypes extends Component {
 		return (
 			
 				<Formfield>
-							<div class={style.cardHeader}>Kanavatyyppi<space>     </space>
-							  <select tabIndex="0" disabled={state.disabled}
+							<div class={style.cardHeader}>
+							<label for="idchanneltype">Kanavatyyppi:</label>
+							  <select tabIndex="0" disabled={state.disabled} id="idchanneltype"
 									selectedIndex={this.state.selectedsuodatinindex}
 									preselected outlined 
 									onChange={(e)=>{
