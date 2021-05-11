@@ -13,11 +13,11 @@ This app is showing tv and radio programs on a browser. To get json or xml data 
 - 3.b cd proxyserver
 - 3.c start proxy server: node server.js
    if above deploy is given, then this proxy server can serve also as html normal server and as a proxy server.
-- 3.d Start a browser and a load command: localhost:9090 and enter
+- 3.d Start a browser and a load command: localhost:9090 and enter (or url: xxx.com:9090 if it is servers address)
 4.  if no deploy.sh comand given, then: give on repo dir: npm run dev and enter
 - 4.b  cd proxyserver
 - 4.c node server.js
-- 4.d  Start a browser and a load command: localhost:8080 and enter
+- 4.d  Start a browser and a load command: localhost:8080 and enter (or url: xxx.com:8080 if it is servers address)
 5. Select Yle, Telkku, Amppari etc program sources and select a date html link to choose a date of programs to show
 6. You can control to how loaded programs are shown and search text from programs data etc  
 
