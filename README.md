@@ -6,18 +6,18 @@ This app is showing tv and radio programs on a browser. To get json or xml data 
 
 1. On local repo: 
 2. Install node, npm, curl apps and preact-cli.
-3.a give command: deploy.bat or deploy.sh
+3. give command: deploy.bat or deploy.sh
    (deploy give next commands: npm run build
    and copies build files into proxy dir public)
-3.ab Add installed curl path into common path in a computer where node server.js should to start
-3.b cd proxyserver
-3.c start proxy server: node server.js
+- 3.ab Add installed curl path into common path in a computer where node server.js should to start
+- 3.b cd proxyserver
+- 3.c start proxy server: node server.js
    if above deploy is given, then this proxy server can serve also as html normal server and as a proxy server.
-3.d Start a browser and a load command: localhost:9090 and enter
-4.a  if no deploy.sh comand given, then: give on repo dir: npm run dev and enter
-4.b  cd proxyserver
-4.c node server.js
-4.d  Start a browser and a load command: localhost:8080 and enter
+- 3.d Start a browser and a load command: localhost:9090 and enter
+4.  if no deploy.sh comand given, then: give on repo dir: npm run dev and enter
+- 4.b  cd proxyserver
+- 4.c node server.js
+- 4.d  Start a browser and a load command: localhost:8080 and enter
 5. Select Yle, Telkku, Amppari etc program sources and select a date html link to choose a date of programs to show
 6. You can control to how loaded programs are shown and search text from programs data etc  
 
