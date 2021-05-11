@@ -27,8 +27,9 @@ It has two page theme: white and black. It has bigger fonts.
 1. Download proxyserver.zip 
 2. Install node and curl apps.
 3. Unzip proxyserver.zip
-4. cd proxyserver
-5. start proxy server: node server.js
+4. Add installed curl path into common path in a computer where node server.js should to find it
+5. cd proxyserver
+6. start proxy server: node server.js
    This node server is using curl app, when it is loading html from different tv program html servers!
 6. Start a browser and a load command: localhost:9090 and enter
 7. Select Yle, Telkku, Amppari etc program sources and select a date html link to choose a date of programs to show
