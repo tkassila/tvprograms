@@ -1,6 +1,7 @@
 # preact material app
 
-This app is showing tv and radio programs on a browser. To get json or xml data from servers, it is calling local proxy node server (on port 9090). You can show also descriptions and search a text from canals or programs. The app is also for visual handicapp people. Has bigger fonts, can be used with screen readers, white and black colors to change.
+This app is showing tv and radio programs on a browser. To get json or xml data from servers, it is calling local proxy node server (on port 9090). You can show also descriptions and search a text from canals or programs. The app is also working with screenreaders.
+It has two page theme: white and black. It has bigger fonts.
 
 # Developer install
 
