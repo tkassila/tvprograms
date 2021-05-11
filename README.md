@@ -37,7 +37,7 @@ It has two page theme: white and black. It has bigger fonts.
 
 Super performant `Material` app for preact world using [preact-material-components](https://github.com/prateekbh/preact-material-components)
 
-## CLI Commands
+## Developer PREACT-CLI Commands
 
 ``` bash
 # install dependencies
