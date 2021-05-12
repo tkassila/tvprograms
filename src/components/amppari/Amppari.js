@@ -127,6 +127,7 @@ export default class Amppari extends Component {
 			textSearch: null,
 			bSearchButtonClicked: false,
 			bShowTableBorder: false,
+			bshowdcurrentprograms: true,
 		}
 		
 		// https://telkussa.fi/sivu/1/20210215
@@ -1433,6 +1434,8 @@ export default class Amppari extends Component {
 			console.log(this.state);
 		}
 
+		const currenttime = new Date();
+
 		let all_channels = this.channels;
 		if (all_channels == null)
 		{
@@ -1471,6 +1474,8 @@ export default class Amppari extends Component {
 						selectedtyyppi={this.state.selectedtyyppi}
 						showSearch={this.state.bSearchButtonClicked && this.state.textSearch != null}
 						getPOfIndex={this.getPOfIndex}
+						currenttime = {currenttime}
+						bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 						displayAllDescriptions={this.state.bDisplayAllDescriptions} />;
 			});
 		}
@@ -1487,6 +1492,8 @@ export default class Amppari extends Component {
 							showSearch={this.state.bSearchButtonClicked && this.state.textSearch != null}
 							selectedtyyppi={this.state.selectedtyyppi}
 							getPOfIndex={this.getPOfIndex}
+							currenttime = {currenttime}
+							bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 							themevalue={this.props.themevalue}
 							displayAllDescriptions={this.state.bDisplayAllDescriptions} />;
 				});
@@ -1537,6 +1544,8 @@ export default class Amppari extends Component {
 										&& this.state.textSearch != null}
 									selectedtyyppi={this.state.selectedtyyppi}
 									getPOfIndex={this.getPOfIndex}
+									currenttime = {currenttime}
+									bshowdcurrentprograms={this.state.bshowdcurrentprograms}		
 									themevalue={this.props.themevalue}
 									displayAllDescriptions={this.state.bDisplayAllDescriptions} />;
 						});
@@ -1558,6 +1567,8 @@ export default class Amppari extends Component {
 									&& this.state.textSearch != null}
 								selectedtyyppi={this.state.selectedtyyppi}
 								getPOfIndex={this.getPOfIndex}
+								currenttime = {currenttime}
+								bshowdcurrentprograms={this.state.bshowdcurrentprograms}	
 								themevalue={this.props.themevalue}
 								displayAllDescriptions={this.state.bDisplayAllDescriptions} />;
 					});
@@ -2745,6 +2756,22 @@ export default class Amppari extends Component {
 		}
 	}
 
+	showdcurrentprograms = (event) => {
+		event.preventDefault();
+		let value = event.target.checked;
+		console.log("showdcurrentprograms");
+		let bValue = value; // this.state.bDisplayAllDescriptions;
+		console.log("bValue");
+		console.log(bValue);
+		/*
+		if (value === 'on')
+			bValue = true;
+		console.log(value);
+		*/
+		this.setState({bshowdcurrentprograms: bValue,
+			/* bSearchButtonClicked: false */ });
+	}
+
 	render(props, state) {
 		if (Config.bDebug)
 		{
@@ -2919,6 +2946,12 @@ export default class Amppari extends Component {
 						</Button>
 						</Formfield>
 
+						<Formfield>
+							<Checkbox tabIndex="0" inputid="checkshowdcurrentprograms"
+						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
+								onChange={this.showdcurrentprograms} 
+							 />
+						</Formfield>
 						<Formfield>
 						<Checkbox onChange={this.showAllDescriptions}
 							ref={this.showAllDescrRef}

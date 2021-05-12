@@ -9,6 +9,37 @@ import AmppariShowProgram from './AmppariShowProgram';
 function AmppariChannel(props)
 {
 
+    const oldProgram =(program, currenttime, nextprogram) =>
+    {
+        const startTime = new Date(program.timestamp * 1000);
+        let endtTime = null;
+        let endtTimeHours = null;
+        if (!nextprogram)
+            return false;
+        if (nextprogram)
+        {
+            endtTime = new Date(nextprogram.timestamp * 1000);
+            endtTimeHours = endtTime.getHours();
+        }
+        const currentHours =  currenttime.getHours();
+        if (endtTimeHours && endtTimeHours < currentHours)
+        {
+            console.log("kkk");
+            return true;
+        }
+        if (endtTimeHours && endtTime.getHours() === currenttime.getHours())
+        {
+            const endtTimeMinutes =  endtTime.getMinutes();
+            const currentMinutes =  currenttime.getMinutes();
+            if( endtTimeMinutes < currentMinutes)
+            {
+                console.log("kkk");
+                return true;
+            }
+        }
+        return false;
+    }
+
        // const cssDark = useContext(CssDark);
         let displayitems = null;
         /*
@@ -44,6 +75,23 @@ function AmppariChannel(props)
                     filteredchannels = filteredchannels1;
                 }
             }
+            
+            if (props.bshowdcurrentprograms && filteredchannels)
+            {
+                let i = 0, max = filteredchannels.length;
+                let program, nextprogram;
+                for(i = 0; i < max; i++)
+                {
+                    // value = path[i].localName;
+                    program = filteredchannels[i];
+                    nextprogram = null;
+                    if ((i+1) < max)
+                        nextprogram = filteredchannels[i+1];
+                    return !oldProgram(program, props.currenttime, nextprogram);
+                }
+                filteredchannels = filteredchannels1;
+            }
+
             displayitems = filteredchannels.map((program, i) => {
 				return <AmppariShowProgram id={i} data={program}
                     displayAllDescriptions={props.displayAllDescriptions}

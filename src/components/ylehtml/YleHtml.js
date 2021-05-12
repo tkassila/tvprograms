@@ -117,6 +117,7 @@ export default class YleHtml extends Component {
 			textSearch: null,
 			isbrowser: browser,
 			themevalue: props.themevalue,
+			bshowdcurrentprograms: true,
 		}
 
 		this.schedules = null;
@@ -1073,6 +1074,8 @@ export default class YleHtml extends Component {
 							bShowDesciption={state.bDisplayAllDescriptions}
 							showSearch={this.state.bSearchButtonClicked && this.state.textSearch != null}
 							getPOfIndex={this.getPOfIndex}
+							currenttime = {currenttime}
+							bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 							themevalue={this.props.themevalue} />;
 				  }); 
 
@@ -1252,6 +1255,22 @@ export default class YleHtml extends Component {
 		this.store.setState({schedules: null});
 		this.setState({ progsource: id, bShowOnlyMovies: false, schedules: null});
 		this.checkBoxMovieRef.current.checked = false;
+	}
+
+	showdcurrentprograms = (event) => {
+		event.preventDefault();
+		let value = event.target.checked;
+		console.log("showdcurrentprograms");
+		let bValue = value; // this.state.bDisplayAllDescriptions;
+		console.log("bValue");
+		console.log(bValue);
+		/*
+		if (value === 'on')
+			bValue = true;
+		console.log(value);
+		*/
+		this.setState({bshowdcurrentprograms: bValue,
+			/* bSearchButtonClicked: false */ });
 	}
 
 	showAllDescriptions = (event) => {
@@ -2007,6 +2026,7 @@ export default class YleHtml extends Component {
 		let tableheaders = null;
 		let tabletds = null;
 		let headers = null;
+		let currenttime = new Date();
 
 		let tableBorderStyle = '';
 		let table_border_color = 'black';
@@ -2052,7 +2072,10 @@ export default class YleHtml extends Component {
 							bShowOnlyMovies={state.bShowOnlyMovies}
 							bShowDesciption={state.bDisplayAllDescriptions}
 							getPOfIndex={this.getPOfIndex}
+							currenttime = {currenttime}
+							bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 							themevalue={props.themevalue}
+							bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 							showSearch={state.bSearchButtonClicked && state.textSearch != null}
 							/>;
 				  }); 
@@ -2202,6 +2225,12 @@ export default class YleHtml extends Component {
 					</Button>
 					</Formfield>
 
+					<Formfield>
+						<Checkbox tabIndex="0" inputid="checkshowdcurrentprograms"
+						    labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
+							onChange={this.showdcurrentprograms} 
+							 />
+					</Formfield>
 					<Formfield>
 						<Checkbox tabIndex="0" inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions}

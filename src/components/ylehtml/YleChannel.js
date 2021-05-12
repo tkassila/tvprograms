@@ -22,23 +22,53 @@ export default function YleChannel(props) {
 
 		const [h3id] = useState(_uniqueId('prefix-'));
 
+		const oldProgram =(program, currenttime) =>
+		{
+			const startTime = new Date(program.startDate);
+			const endtTime = new Date(program.endDate);
+			const endtTimeHours =  endtTime.getHours();
+			const currentHours =  currenttime.getHours();
+			if (endtTimeHours < currentHours)
+			{
+				console.log("kkk");
+				return true;
+			}
+			if (endtTime.getHours() === currenttime.getHours())
+			{
+				const endtTimeMinutes =  endtTime.getMinutes();
+				const currentMinutes =  currenttime.getMinutes();
+					if( endtTimeMinutes < currentMinutes)
+				{
+					console.log("kkk");
+					return true;
+				}
+			}
+			return false;
+		}
+
 		const getPrograms = (programs) =>
 		{
 			let progs = programs.map((s, k) => {
 				if (s === null || s === undefined || props.data === null
 					|| props.data == undefined)
 				{
-					console.log("s= k=" +k);
-					console.log(s);
-					console.log("data=");
-					console.log(props.data);
+					if (Config.bDebug)
+					{
+						console.log("s= k=" +k);
+						console.log(s);
+						console.log("data=");
+						console.log(props.data);
+					}
 				}
 				if ((props.data && s.status != 'schedule-list__no-data')
 				 	/* && (!props.bShowOnlyMovies || 
 					(props.bShowOnlyMovies && s.movie )) */ )
 				{					
-					if (!props.bShowOnlyMovies || 
-						(props.bShowOnlyMovies && s.movie ))
+					if ((!props.bShowOnlyMovies && 
+						(!props.bshowdcurrentprograms || props.bshowdcurrentprograms 
+							&& !oldProgram(s, props.currenttime))) || 
+						(props.bShowOnlyMovies && s.movie && (!props.bshowdcurrentprograms 
+							|| props.bshowdcurrentprograms && !oldProgram(s, props.currenttime)) ))
 					return <YleProgram id={k} data={s} 
 						selectedcategory={props.selectedcategory} 
 						bSvLang={props.bSvLang} 

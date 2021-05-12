@@ -169,35 +169,35 @@ export default class Header extends Component {
 							data-message="Mistä ohjelmia haetaan (radionapit) sekä ulkoasun valinta valikosta">
 						<FormField>
 							<Radio aria-label="" tabIndex="0" id="radio_yle" name='optsource' 
-							    checked={state.progsource == 'radio_yle'} style={style.checkbox}
+							    checked={state.progsource == 'radio_yle'} 
 								onChange={this.radioProgSourceChanged} ></Radio>
 							<label style={{ color: "white" }} 
 							for="radio_yle">Yle</label>
 						</FormField>
 						<FormField>
 							<Radio tabIndex="0" id="radio_telkku" name='optsource' 
-							    checked={state.progsource == 'radio_telkku'} style={style.checkbox}
+							    checked={state.progsource == 'radio_telkku'}
 								onChange={this.radioProgSourceChanged}></Radio>
 							<label style={{ color: "white" }} 
 							for="radio_telkku">Telkku</label>
 						</FormField>
 						<FormField>
 							<Radio tabIndex="0" id="radio_telkkuhtml" name='optsource' 
-							    checked={state.progsource == 'radio_telkkuhtml'} style={style.radio}
+							    checked={state.progsource == 'radio_telkkuhtml'} 
 								onChange={this.radioProgSourceChanged}></Radio>
 							<label style={{ color: "white" }} 
 							for="radio_telkkuhtml">Telkku html</label>
 						</FormField>
 						<FormField>
 							<Radio tabIndex="0" id="radio_amppari" name='optsource' 
-							    checked={state.progsource == 'radio_amppari'} style={style.radio}
+							    checked={state.progsource == 'radio_amppari'} 
 								onChange={this.radioProgSourceChanged}></Radio>
 							<label style={{ color: "white" }} 
 							for="radio_amppari">Amppari tv</label>
 						</FormField>
 						<FormField>
 							<Radio tabIndex="0" id="radio_htmlamppari" name='optsource' 
-							    checked={state.progsource == 'radio_htmlamppari'} style={style.radio}
+							    checked={state.progsource == 'radio_htmlamppari'}
 								onChange={this.radioProgSourceChanged}></Radio>
 							<label style={{ color: "white" }} 
 							for="radio_htmlamppari">Amppari tv html</label>
