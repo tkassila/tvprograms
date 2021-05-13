@@ -80,14 +80,15 @@ function AmppariChannel(props)
             {
                 let i = 0, max = filteredchannels.length;
                 let program, nextprogram;
+                let filteredchannels1 = [];
                 for(i = 0; i < max; i++)
                 {
-                    // value = path[i].localName;
                     program = filteredchannels[i];
                     nextprogram = null;
                     if ((i+1) < max)
                         nextprogram = filteredchannels[i+1];
-                    return !oldProgram(program, props.currenttime, nextprogram);
+                    if (!oldProgram(program, props.currenttime, nextprogram))
+                        filteredchannels1.push(program);
                 }
                 filteredchannels = filteredchannels1;
             }
