@@ -155,18 +155,19 @@ export default class Header extends Component {
 	render(props, state) {
 		console.log(props.selectedRoute);
 		return (
-			<div>
-				<TopAppBar className="topappbar">
+			<div role="navigation" lang="fi" tabIndex="0" aria-label="Ohjelmalähteet ja ulkoasu (musta tai valkoinen)">
+				<TopAppBar className="topappbar">	
 					<TopAppBar.Row>
-						<TopAppBar.Section align-start aria-label="Ohjelmalähteet">
+						<TopAppBar.Section align-start>
 							<TopAppBar.Icon menu onClick={this.openDrawer}>
 							menu
 							</TopAppBar.Icon>
-							<TopAppBar.Title tabIndex="0" >Ohjelmat</TopAppBar.Title>
+							<TopAppBar.Title tabIndex="0" >TV ohjelmat</TopAppBar.Title>
 							
-							<span tabIndex="0" 
+							<div role="radiogroup" aria-labelledby="idprogramdatasource"
 							style={{ "display": "table", "margin": "0 auto" }} 
-							data-message="Mistä ohjelmia haetaan (radionapit) sekä ulkoasun valinta valikosta">
+							data-message="Mistä ohjelmia haetaan (radionapit) sekä ulkoasun valinta painonapista">
+							<label id="idprogramdatasource">Ohjelmalähde:</label>
 						<FormField>
 							<Radio aria-label="" tabIndex="0" id="radio_yle" name='optsource' 
 							    checked={state.progsource == 'radio_yle'} 
@@ -202,9 +203,9 @@ export default class Header extends Component {
 							<label style={{ color: "white" }} 
 							for="radio_htmlamppari">Amppari tv html</label>
 						</FormField>						
-				</span>
-					<div><FormField><Button style={{ color: "white" }} 
-						tabIndex="0" onClick={this.toggleDarkTheme}>Vaihda teemaa</Button></FormField>
+				</div>
+					<div><FormField><Button style={{ color: "white" }} role="button" lang="fi"
+						tabIndex="0" onClick={this.toggleDarkTheme}>Vaihda ulkoasua</Button></FormField>
 					</div>
 
 						</TopAppBar.Section>
@@ -225,11 +226,12 @@ export default class Header extends Component {
 						</Drawer.DrawerItem>
 					</Drawer.DrawerContent>
 				</Drawer>
-				<Dialog tabIndex="0" ref={this.dialogRef}>
+				<Dialog tabIndex="0" ref={this.dialogRef} role="dialog" id="dialogtheme" 
+					 aria-modal="false">
 					<Dialog.Header tabIndex="0" >Asetukset</Dialog.Header>
 					<Dialog.Body>
 						<div>
-							<div>Vaihda tummaan sivuteemaan tai vaaleaan teemaan 
+							<div id="divtheme" lang="fi" >Vaihda tummaan sivuteemaan tai vaaleaan teemaan 
 							</div>
 							<br/><Switch ref={this.themeswitch} 
 							checked={this.state.darkThemeEnabled}

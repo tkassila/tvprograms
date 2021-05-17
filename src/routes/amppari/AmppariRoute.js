@@ -55,17 +55,17 @@ export default class AmppariRoute extends Component {
 			'Access-Control-Allow-Headers': 'Content-Type'
 */	
 	
-	
+	// 	<div class={`${style.home} page`}>
+	// 			</div>
+
 	render(props, state) {
 				
 		return (
 			<div class={`${style.home} page`}>
-				<Card>
                 	<Amppari store={props.store}
 					themevalue={props.themevalue} /> 
 					<div style={{ "background-color": 'red', color: "yellow" } }>{state.errmsg}</div>				
-				</Card> 
-			</div>
+				</div> 
 		);
 	}
 }

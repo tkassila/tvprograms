@@ -1,6 +1,6 @@
-import { h, Component, createRef } from 'preact';
-import Card from 'preact-material-components/Card';
-import 'preact-material-components/Card/style.css';
+import { h, Component, createRef, Fragment } from 'preact';
+//import Card from 'preact-material-components/Card';
+//import 'preact-material-components/Card/style.css';
 import 'preact-material-components/Button/style.css';
 
 import Config from '../../utils/Config';
@@ -54,13 +54,11 @@ export default class HtmlAmppariRoute extends Component {
 	render(props, state) {
 				
 		return (
-			<div class={`${style.home} page`}>
-				<Card>
+				<Fragment>
                 	<HtmlAmppari store={props.store} ref={this.control}
 					themevalue={props.themevalue} /> 
 					<div style={{ "background-color": 'red', color: "yellow" } }>{state.errmsg}</div>				
-				</Card> 
-			</div>
+				</Fragment> 
 		);
 	}
 }

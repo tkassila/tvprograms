@@ -2694,8 +2694,8 @@ export default class Amppari extends Component {
 
 			// .item(0).innerHTML
 		  switch (e.key) {
-			case "i":
-			//... handle alt+i
+			case "o":
+			//... handle alt+o
 				let divInsideOfCol = this.getH3OfCurrentColumn(e.path);
 				if (divInsideOfCol)
 				{
@@ -2703,8 +2703,8 @@ export default class Amppari extends Component {
 				}
 				break;
 
-			case "p":
-			//... handle alt+p
+			case "k":
+					//... handle alt+k
 				currentColInd = this.getCurrentColumnIndex(e.path);
 				if (currentColInd > 0)
 				{
@@ -2716,8 +2716,8 @@ export default class Amppari extends Component {
 				}
 				break;
 
-			case "n":
-			//... handle alt+n
+			case "s":
+					//... handle alt+s
 				currentColInd = this.getCurrentColumnIndex(e.path);
 				if (currentColInd !== -1 && currentColInd < (lenCols -1))
 				{
@@ -2770,6 +2770,41 @@ export default class Amppari extends Component {
 		*/
 		this.setState({bshowdcurrentprograms: bValue,
 			/* bSearchButtonClicked: false */ });
+	}
+
+	altPlusKeyUpProgramHeader = (e) =>
+	{
+		e = e || window.event;
+		let keyCode = e.keyCode || e.which,
+			arrow = { left: 37, up: 38, right: 39, down: 40 };
+
+			console.log("pressed");
+		if (e.altKey) {
+			if (Config.bDebug)
+			{
+				console.log("control key");
+				console.log("e.altKey");
+				console.log(e.altKey);
+				console.log("keyCode");
+				console.log(keyCode);
+				console.log("e.keyCode");
+				console.log(e.keyCode);
+				console.log("e");
+				console.log(e);
+			}
+			// .item(0).innerHTML
+		  switch (e.key) {
+			case "t":
+					//... handle alt+t
+				if (document.getElementById('idprogramtableh3'))
+				{
+					let divh3 = document.getElementById('idprogramtableh3');
+					if (divh3)
+						divh3.focus();					
+				}
+				break;
+		  }
+		}
 	}
 
 	render(props, state) {
@@ -2870,55 +2905,56 @@ export default class Amppari extends Component {
 	          msgdiv = <p className={"p" +cssDark} tabIndex="0" style={style.political_p} aria-label={state.errmsg}></p>;
 
 		return (
-			<div class={style.cardHeader}>
-				<h1 tabIndex="0">Amppari {this.getFetchedDate()}</h1>
+			<Card>
+			<div class={style.cardHeader} onKeyUp={this.altPlusKeyUpProgramHeader}>
+				<h1 tabIndex="0" lang="fi" >Amppari {this.getFetchedDate()}</h1>
 				<Card>
-					<div class={style.cardHeader}>
+					<div tabIndex="0" lang="fi" class={style.cardHeader}>
 						Valitse seuraavista:
                     </div>
 					<div class={style.cardHeader}>
-						<a id="aikalink_nyt" href="." onClick={this.onClickSelectedAika}>Nyt ja seuraavaksi</a><space> </space>
-						<a id="aikalink_tulevat" href="." onClick={this.onClickSelectedAika}>Tulevat</a><space> </space>
-						<a id="aikalink_paiva" href="." onClick={this.onClickSelectedAika}>Koko päivä</a><space> </space>
-						<a id="aikalink_ilta" href="." onClick={this.onClickSelectedAika}>Ilta (17-22)</a><space> </space>
-						<a id="aikalink_yo" href="." onClick={this.onClickSelectedAika}>Yö (22-01)</a><space> </space>
+						<a id="aikalink_nyt" lang="fi" href="." onClick={this.onClickSelectedAika}>Nyt ja seuraavaksi</a><space> </space>
+						<a id="aikalink_tulevat" lang="fi" href="." onClick={this.onClickSelectedAika}>Tulevat</a><space> </space>
+						<a id="aikalink_paiva" lang="fi" href="." onClick={this.onClickSelectedAika}>Koko päivä</a><space> </space>
+						<a id="aikalink_ilta" lang="fi" href="." onClick={this.onClickSelectedAika}>Ilta (17-22)</a><space> </space>
+						<a id="aikalink_yo" lang="fi" href="." onClick={this.onClickSelectedAika}>Yö (22-01)</a><space> </space>
 						<br/>
                     </div>
 
 					<div class={style.cardHeader}>
-						<div>
-							Hae tv-ohjelmatiedot alle taulukkoon yllä olevan päivän ajankohta linkin ja alla päivämäärän mukaan:
+						<div lang="fi" tabIndex="0" >
+							Hae tv-ohjelmatiedot alimpaan taulukkoon yllä olevan päivän ajankohta linkin ja alla olevan päivämäärän mukaan:
 						</div>
 						<div class={style.cardHeader}>
-							<a href="." id={'dayname_'+this.getPlus1DayId(0)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(0)} 
 							      onClick={this.onClickSetDateString}>{this.getPlus1Day(0)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(1)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(1)} 
 							       onClick={this.onClickSetDateString}>{this.getPlus1Day(1)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(2)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(2)} 
 							      onClick={this.onClickSetDateString}>{this.getPlus1Day(2)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(3)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(3)} 
 							         onClick={this.onClickSetDateString}>{this.getPlus1Day(3)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(4)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(4)} 
 							        onClick={this.onClickSetDateString}>{this.getPlus1Day(4)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(5)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(5)} 
 							            onClick={this.onClickSetDateString}>{this.getPlus1Day(5)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(6)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(6)} 
 							         onClick={this.onClickSetDateString}>{this.getPlus1Day(6)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(7)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(7)} 
 							          onClick={this.onClickSetDateString}>{this.getPlus1Day(7)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(8)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(8)} 
 							        onClick={this.onClickSetDateString}>{this.getPlus1Day(8)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(9)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(9)} 
 							            onClick={this.onClickSetDateString}>{this.getPlus1Day(9)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(10)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(10)} 
 							            onClick={this.onClickSetDateString}>{this.getPlus1Day(10)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(11)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(11)} 
 							         onClick={this.onClickSetDateString}>{this.getPlus1Day(11)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(12)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(12)} 
 							         onClick={this.onClickSetDateString}>{this.getPlus1Day(12)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(13)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(13)} 
 							        onClick={this.onClickSetDateString}>{this.getPlus1Day(13)}</a><space> </space>
-							<a href="." id={'dayname_'+this.getPlus1DayId(14)} 
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(14)} 
 							        onClick={this.onClickSetDateString}>{this.getPlus1Day(14)}</a><br/>
 						</div>
 						</div>
@@ -2926,17 +2962,17 @@ export default class Amppari extends Component {
 				<Card>
 					<div >
 						<Formfield>
-							<Button ripple raised disabled={state.channels == null
+							<Button lang="fi" ripple raised disabled={state.channels == null
 										|| (state.showChannelsAtSameTime == 1 
 											&& state.bCheckShowChannelsAtSameTime) 
 										|| state.showChannelsAtSameTime >= state.channels.length }
-									onClick={this.prevChannelSetClicked}>
+									onClick={this.prevChannelSetClicked} aria-label="Aikaisemmat kanavat">
 							&lt;
 							</Button>
 						</Formfield>
 						<space>          </space>
 						<Formfield>
-							<Button ripple raised 
+							<Button lang="fi" ripple raised aria-label="Seuraavat kanavat"
 								disabled={state.channels == null
 							|| (state.showChannelsAtSameTime == 1
 								&& state.bCheckShowChannelsAtSameTime)
@@ -2947,7 +2983,7 @@ export default class Amppari extends Component {
 						</Formfield>
 
 						<Formfield>
-							<Checkbox tabIndex="0" inputid="checkshowdcurrentprograms"
+							<Checkbox tabIndex="0" lang="fi" inputid="checkshowdcurrentprograms"
 						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
 								onChange={this.showdcurrentprograms} 
 							 />
@@ -2963,7 +2999,7 @@ export default class Amppari extends Component {
 							ref={this.showOneChannelRef}
 							inputid="checkshowonechannel"
 						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
-						<select tabIndex="0" 
+						<select tabIndex="0" lang="fi" 
 								selectedIndex={selectedchannelindex}
 								disabled={!state.bCheckShowChannelsAtSameTime}
 								preselected outlined 
@@ -2979,9 +3015,9 @@ export default class Amppari extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<label for="input_number_columss">
+						<label for="input_number_columss" lang="fi" >
 						Näytettävien kanavien lkm: </label>
-						<input id="input_number_columss" 
+						<input id="input_number_columss" lang="fi" 
 							name="input_number_columns"
 							disabled={this.state.bCheckShowChannelsAtSameTime}
 							type="number" min="1" max="10"
@@ -3000,7 +3036,7 @@ export default class Amppari extends Component {
 					<space>          </space>
 					<Formfield>
 						<Checkbox onChange={this.showTableBorders}
-							ref={this.showTableBordersRef}							
+							ref={this.showTableBordersRef}	lang="fi" 						
 							inputid="checkTableBorders"
 						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
 					</Formfield>
@@ -3014,13 +3050,14 @@ export default class Amppari extends Component {
 				</Card>
 				<div>
 					{msgdiv}
-							<div class=" mdc-typography--caption"><h3 tabIndex="0">Ohjelmataulukko</h3>
+							<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" lang="fi" tabIndex="0">Ohjelmataulukko</h3>
 							<div class={style.cardHeader}><h3 lang="fi" tabIndex="0" >
 						-- Ohjelmataulukko, liikutaan hiirellä tai taulukon 
 						sisällä seuraavilla näppäimillä: 
-					alt+n = seuraava kanava, alt+p = edellinen kanava sekä 
-					alt+i = kanavan ohjelmiin. Ohelman kuvailun saa näkymään enterillä tai 
-					hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet.</h3></div>
+					alt+s = seuraava kanava, alt+k = edellinen kanava sekä 
+					alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai 
+					hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet.
+					Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.</h3></div>
 							{state.bSearchButtonClicked && state.textSearch != null ? ' (haun tulokset)' : ''}</div>
 							{ !tabletds  && <div tabIndex="0" lang="fi" 
 					aria-label="Ei ohjelmatietoja haettu"><br></br>
@@ -3034,8 +3071,8 @@ export default class Amppari extends Component {
 							</tbody>
 							</table>
 					</div>
-
 			</div>
+			</Card>
 		);
 	}
 }

@@ -167,12 +167,12 @@ export default function YleProgram(props) {
                             props.data.description.toString(),
                             props.themevalue) : props.data.description) : ''}</p> }
 				</div>
-			<Dialog 
+			<Dialog role="dialog" id="dialogtheme" aria-modal="true"
 				 ref={scrollingDlgRef}>
 				  <Dialog.Header lang="fi" tabIndex="0" >{props.channelname}</Dialog.Header>
 				  <Dialog.Body scrollable={true}>
 					<Card><div class="card-header">
-					   <h3 lang="fi" tabIndex="1" class=" mdc-typography--title">
+					   <h3 lang="fi" id="h3program" tabIndex="1" class=" mdc-typography--title">
 					   {getProgramSymbol(props)} {props.data.startTime} 
 					   <space> </space> {props.data.name} {props.data.captiontext ? props.data.captiontext : ''}</h3>
 					   <h3 lang="fi" tabIndex="3" class=" mdc-typography--title">					   	   
@@ -182,7 +182,7 @@ export default function YleProgram(props) {
 					</Card>
 				  </Dialog.Body>
 				  <Dialog.Footer>
-					  <Dialog.FooterButton lang="fi" tabIndex="4" onCancel={onClickDisplayDialog} cancel={true} accept={true}>Sulje</Dialog.FooterButton>
+					  <Dialog.FooterButton lang="fi" tabIndex="4" onCancel={onClickDisplayDialog} cancel={true} >Sulje</Dialog.FooterButton>
 				  </Dialog.Footer>
 	  		</Dialog> 
 	    </div>

@@ -21,12 +21,12 @@ class CheckBox extends Component
 
         return ( 
                 <Fragment>
-                        <input type="checkbox" onChange={props.onChange} 
+                        <input lang="fi" type="checkbox" onChange={props.onChange} 
                             ref={props.inputref === undefined ? undefined : props.inputref}                     
                             id={props.inputid === undefined ? 'idcheckboxundef' : props.inputid}
                             checked={props.checked === undefined ? false : props.checked} />
                             <span class="checkmark"></span>
-                            <label class="container" 
+                            <label lang="fi" class="container" 
                         for={props.inputid === undefined ? 'idcheckboxundef' : props.inputid}
                         id={props.inputid === undefined ? 'idcheckboxundef-label' : props.inputid+'-label'} >
                             {props.labeltext}

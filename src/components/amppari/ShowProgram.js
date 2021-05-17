@@ -118,12 +118,12 @@ class ShowProgram extends Component
                         <p><a href={props.data.link} target="_blank">ohjelmalinkki</a></p>
                         </Fragment> : null}
                     
-                    <Dialog 
+                    <Dialog role="dialog" id="dialogprogram" aria-modal="true"
                                ref={this.scrollingDlgRef}>
                                 <Dialog.Header>{props.channel}</Dialog.Header>
                                 <Dialog.Body scrollable={true}>
                                   <Card><div class="card-header">
-                                     <h3 class=" mdc-typography--title">
+                                     <h3 id="h1lprogram" class=" mdc-typography--title">
                                          {props.data.title}</h3>
                                      <h3 class=" mdc-typography--title">
                                          {props.data.description}</h3><br/>
@@ -132,7 +132,7 @@ class ShowProgram extends Component
                                   </Card>
                                 </Dialog.Body>
                                 <Dialog.Footer>
-                                    <Dialog.FooterButton onCancel={this.onClickDisplayDialog} cancel={true} accept={true}>Sulje</Dialog.FooterButton>
+                                    <Dialog.FooterButton onCancel={this.onClickDisplayDialog} cancel={true} >Sulje</Dialog.FooterButton>
                                 </Dialog.Footer>
                     </Dialog> 
                     </div>

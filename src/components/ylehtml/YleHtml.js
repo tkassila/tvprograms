@@ -1,4 +1,4 @@
-import { h, Component, createRef } from 'preact';
+import { h, Component, createRef, Fragment } from 'preact';
 import Card from 'preact-material-components/Card'; 
 import 'preact-material-components/Card/style.css';
 import Button from 'preact-material-components/Button';
@@ -282,8 +282,8 @@ export default class YleHtml extends Component {
 
 			// .item(0).innerHTML
 		  switch (e.key) {
-			case "i":
-			//... handle alt+i
+			case "o":
+					//... handle alt+o
 				let divInsideOfCol = this.getH3OfCurrentColumn(e.path);
 				if (divInsideOfCol)
 				{
@@ -291,8 +291,8 @@ export default class YleHtml extends Component {
 				}
 				break;
 
-			case "p":
-			//... handle alt+p
+			case "k":
+					//... handle alt+k
 				currentColInd = this.getCurrentColumnIndex(e.path);
 				if (currentColInd > 0)
 				{
@@ -304,8 +304,8 @@ export default class YleHtml extends Component {
 				}
 				break;
 
-			case "n":
-			//... handle alt+n
+			case "s":
+					//... handle alt+s
 				currentColInd = this.getCurrentColumnIndex(e.path);
 				if (currentColInd !== -1 && currentColInd < (lenCols -1))
 				{
@@ -2020,6 +2020,42 @@ export default class YleHtml extends Component {
 		*/
 	}
 
+	altPlusKeyUpProgramHeader = (e) =>
+	{
+		e = e || window.event;
+		let keyCode = e.keyCode || e.which,
+			arrow = { left: 37, up: 38, right: 39, down: 40 };
+
+			console.log("pressed");
+		if (e.altKey) {		
+			if (Config.bDebug)
+			{
+				console.log("control key");
+				console.log("e.altKey");
+				console.log(e.altKey);
+				console.log("keyCode");
+				console.log(keyCode);
+				console.log("e.keyCode");
+				console.log(e.keyCode);
+				console.log("e");
+				console.log(e);
+			}
+
+			// .item(0).innerHTML
+		  switch (e.key) {
+			case "t":
+					//... handle alt+t
+				if (document.getElementById('idprogramtableh3'))
+				{
+					let divh3 = document.getElementById('idprogramtableh3');
+					if (divh3)
+						divh3.focus();					
+				}
+				break;
+		  }
+		}
+	}
+
 	render(props, state) {
 
 		// let uigrid = this.createUiGrid();
@@ -2129,11 +2165,14 @@ export default class YleHtml extends Component {
 		// 			style = { textFieldStype }  />
 			
 
-		return (			
+		return (	
+			<Fragment>
 			<Card>
-				<div class={style.cardHeader}>
-						<h1 tabIndex="0" title={"Yle " +this.getFetchedDate()}>Yle {this.getFetchedDate()}</h1>
-						<span tabIndex="0" aria-label="Tv tai radio-ohjelmat">
+				<div class={style.cardHeader} onKeyUp={this.altPlusKeyUpProgramHeader}>
+						<h1 tabIndex="0" lang="fi" title={"Yle " +this.getFetchedDate()}>Yle {this.getFetchedDate()}</h1>`
+						<div role="radiogroup" aria-labelledby="idyleprogramdatasource">
+						<label id="idyleprogramdatasource" lang="fi" >
+							Tv tai radio-ohjelmat</label>
 						<FormField>
 							<Radio tabIndex="0" id="rtv" name='opttv' checked={state.progsource === 'rtv'}
 								onChange={this.radioProgSourceChanged} ></Radio>
@@ -2142,11 +2181,12 @@ export default class YleHtml extends Component {
 								onChange={this.radioProgSourceChanged}></Radio>
 							<label for="rradio">Radio</label>
 						</FormField>					
-						</span>
+						</div>
 						
+						<section>
 					<div class={style.cardHeader}>
 						<p lang="fi" tabIndex="0" >
-							Hae tv-ohjelmatiedot alle taulukkoon alla päivämäärän mukaan:
+							Hae tv-ohjelmatiedot alimpaan taulukkoon alla olevan päivämäärän mukaan:
 						</p>
 						<div class={style.cardHeader}>
 							<a href="." id={'dayname_'+this.getPlus1DayId(0)} 
@@ -2196,6 +2236,8 @@ export default class YleHtml extends Component {
 							       onClick={this.onClickSetDateStringYle}>{this.getPlus1Day(14)}</a><br/>						
 						</div>
 					</div>
+					</section>
+					<section>
 					<div class={style.cardBody} lang="fi" tabIndex="0" aria-labelled="Miten ohjelmatiedot näytetään">
 
 						<div style={{ "background-color": 'red', color: "yellow" } }>{state.errmsg}</div>					
@@ -2203,23 +2245,23 @@ export default class YleHtml extends Component {
 					</div>
 					<div>
 					<Formfield>
-					<Button tabIndex="0" ripple raised disabled={state.schedules == null
+					<Button ripple raised disabled={state.schedules == null
 								|| (state.showChannelsAtSameTime == 1 
 									&& state.bCheckShowChannelsAtSameTime) 
 								|| state.showChannelsAtSameTime >= state.schedules.length }
-								lang="fi" tabIndex="0" aria-label="edellinenn kanava"
+								lang="fi" tabIndex="0" aria-label="Aikaisemmat kanavat"
 							onClick={this.prevChannelSetClicked}>							
 					&lt;
 					</Button>
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-					<Button tabIndex="0" ripple raised 
+					<Button ripple raised 
 						disabled={state.schedules == null
 							|| (state.showChannelsAtSameTime == 1
 								&& state.bCheckShowChannelsAtSameTime)
 							|| state.showChannelsAtSameTime >= state.schedules.length }
-							lang="fi" tabIndex="0" aria-label="seuraava kanava"
+							lang="fi" aria-label="Aikaisemmat kanavat"
 							onClick={this.nextChannelSetClicked}>
 					&gt;
 					</Button>
@@ -2312,16 +2354,18 @@ export default class YleHtml extends Component {
 					</Button>
 					</Formfield>
 				</div>
+				</section>
 				<br></br>
+				<section>
 				<div>
-					<div class=" mdc-typography--caption"><h3 tabIndex="0">Ohjelmataulukko</h3></div>					
+					<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" tabIndex="0">Ohjelmataulukko</h3></div>					
 					{isFirefox ? <div class=" mdc-typography--caption" lang="fi" tabIndex="0" >
 			        Jos käytät firefox selainta (ja ruudunlukuohjelmaa), taulukon näppäinkomennot eivät toimi. 
 					Käytä jotain toista selainta. Kiitos.</div> :  <div class=" mdc-typography--caption"><h3 lang="fi" tabIndex="0" >
 					-- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä
-					 alt+n = seuraava kanava, alt+p = edellinen kanava sekä alt+i = kanavan ohjelmiin. 
-					 Ohelman kuvailun saa näkymään enterillä tai hiirenklikkauksella. Taulukon sisällä toimivat myös 
-					 tab sekä shift-tab näppäimet.</h3></div> }
+					 alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. 
+					 Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä toimivat myös 
+					 tab sekä shift-tab näppäimet. Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.</h3></div> }
 					{ !tabletds && <div tabIndex="0" lang="fi" 
 					aria-label="Ei ohjelmatietoja haettu"><br></br>
 					Ei ohjelmatietoja haettu tai tekstihakutulosta (tyhjää hakutekstikenttä)</div> }
@@ -2333,8 +2377,10 @@ export default class YleHtml extends Component {
 					</tbody>
 					</table>
 				</div>
+				</section>
 				</div>
 			</Card>
+			</Fragment>
 		);
 
 		/*

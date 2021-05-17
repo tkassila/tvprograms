@@ -110,7 +110,8 @@ function ShowProgram(props)
                         ? props.getPOfIndex(props.data.titleindex, props.data.title) 
                         : props.data.title}</b></p>
                         {props.displayAllDescriptions ? 
-                        <Fragment><p lang="fi" tabIndex="0">{ props.showSearch && props.data.descriptionindex != undefined
+                        <Fragment><p lang="fi" tabIndex="0">{ props.showSearch 
+                            && props.data.descriptionindex != undefined
                             ? props.getPOfIndex(props.data.descriptionindex, 
                                 props.data.description, props.themevalue) 
                             : props.data.description }</p>
@@ -118,12 +119,13 @@ function ShowProgram(props)
                             <p><a lang="fi" href={props.data.link} onClick={openHtmlPage} >ohjelmalinkki</a></p> : null} 
                             </Fragment> : null}
                      </div>
-                    <Dialog 
+                    <Dialog role="dialog" id="dialogtheme" aria-modal="true"
                                ref={scrollingDlgRef}>
-                                <Dialog.Header lang="fi" tabIndex="0">{props.channel}</Dialog.Header>
+                                <Dialog.Header lang="fi" tabIndex="0">{props.channel ? 
+                                props.channel.replace("Telkussa: ", "") : ''}</Dialog.Header>
                                 <Dialog.Body scrollable={true}>
                                   <Card><div class="card-header">
-                                     <h3 lang="fi" tabIndex="0" class=" mdc-typography--title">
+                                     <h3 lang="fi" id="h3program" tabIndex="0" class=" mdc-typography--title">
                                          {props.data.title}</h3>
                                      <h3 lang="fi" tabIndex="0" class=" mdc-typography--title">
                                          {props.data.description}</h3><br/>
@@ -135,7 +137,7 @@ function ShowProgram(props)
                                     <Dialog.FooterButton tabIndex="0" 
                                     onKeyDown={onEnterDisplayDialog} 
                                     onCancel={onClickDisplayDialog} onAccept={onClickDisplayDialog}
-                                    cancel={true} accept={true}>Sulje</Dialog.FooterButton>
+                                    cancel={true} >Sulje</Dialog.FooterButton>
                                 </Dialog.Footer>
                     </Dialog> 
                     </div>

@@ -1,6 +1,6 @@
-import { h, Component, createRef } from 'preact';
-import Card from 'preact-material-components/Card';
-import 'preact-material-components/Card/style.css';
+import { h, Component, createRef, Fragment } from 'preact';
+//import Card from 'preact-material-components/Card';
+//import 'preact-material-components/Card/style.css';
 import 'preact-material-components/Button/style.css';
 
 import Config from '../../utils/Config';
@@ -56,12 +56,10 @@ export default class HtmlTelkkuRoute extends Component {
 				
 		return (
 			<div class={`${style.home} page`}>
-				<Card>
                 	<HtmlTelkku store={props.store} ref={this.control}
 					themevalue={props.themevalue} /> 
 					<div style={{ "background-color": 'red', color: "yellow" } }>{state.errmsg}</div>				
-				</Card> 
-			</div>
+				</div>
 		);
 	}
 }

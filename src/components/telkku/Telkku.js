@@ -1053,8 +1053,8 @@ export default class Telkku extends Component {
 
 			// .item(0).innerHTML
 		  switch (e.key) {
-			case "i":
-			//... handle alt+i
+			case "o":
+					//... handle alt+o
 				let divInsideOfCol = this.getH3OfCurrentColumn(e.path);
 				if (divInsideOfCol)
 				{
@@ -1062,8 +1062,8 @@ export default class Telkku extends Component {
 				}
 				break;
 
-			case "p":
-			//... handle alt+p
+			case "k":
+					//... handle alt+k
 				currentColInd = this.getCurrentColumnIndex(e.path);
 				if (currentColInd !== -1 && currentColInd > 0)
 				{
@@ -1075,8 +1075,9 @@ export default class Telkku extends Component {
 				}
 				break;
 
-			case "n":
-			//... handle alt+n
+			case "s":
+			case "S":
+					//... handle alt+s
 				currentColInd = this.getCurrentColumnIndex(e.path);
 				if (currentColInd !== -1 && currentColInd < (lenCols -1))
 				{
@@ -1094,6 +1095,43 @@ export default class Telkku extends Component {
 		  }
 		}
 	}
+
+	altPlusKeyUpProgramHeader = (e) =>
+	{
+		e = e || window.event;
+		let keyCode = e.keyCode || e.which,
+			arrow = { left: 37, up: 38, right: 39, down: 40 };
+
+			console.log("pressed");
+		if (e.altKey) {
+			if (Config.bDebug)
+			{
+				console.log("control key");
+				console.log("e.altKey");
+				console.log(e.altKey);
+				console.log("keyCode");
+				console.log(keyCode);
+				console.log("e.keyCode");
+				console.log(e.keyCode);
+				console.log("e");
+				console.log(e);
+			}
+
+			// .item(0).innerHTML
+		  switch (e.key) {
+			case "t":
+					//... handle alt+t
+				if (document.getElementById('idprogramtableh3'))
+				{
+					let divh3 = document.getElementById('idprogramtableh3');
+					if (divh3)
+						divh3.focus();					
+				}
+				break;
+		  }
+		}
+	}
+
 
 	render(props, state) {
 		if (Config.bDebug)
@@ -1140,13 +1178,15 @@ export default class Telkku extends Component {
 		}
 
 		return (
-			<div class={style.cardHeader}>
-				<Dialog 
+			<Card>
+			<div class={style.cardHeader} onKeyUp={this.altPlusKeyUpProgramHeader}>
+				<Dialog role="dialog" id="dialogloading" aria-labelledby="h1loading"
+     			 aria-modal="false"
 				ref={this.scrollingDlgRef}>
 				 <Dialog.Header lang="fi" tabIndex="0" >Odota!</Dialog.Header>
 				 <Dialog.Body scrollable={false}>
 				   <Card><div class="card-header">
-					  <h3 lang="fi" tabIndex="0" class=" mdc-typography--title">
+					  <h3 lang="fi" id="h1loading" default tabIndex="0" class=" mdc-typography--title">
 					  Hetkinen tietoja haetaan par'aikaa...
 					  </h3>
 					  </div>
@@ -1154,20 +1194,22 @@ export default class Telkku extends Component {
 				   </Card>
 				 </Dialog.Body>
 				 <Dialog.Footer>
-					 <Dialog.FooterButton lang="fi" tabIndex="0" 
-					 onCancel={this.onClickDisplayDialog} cancel={true} accept={true}>Sulje</Dialog.FooterButton>
+					 <Dialog.FooterButton lang="fi" tabIndex="0" role="button" 
+					 onCancel={this.onClickDisplayDialog} cancel={true} >Sulje</Dialog.FooterButton>
 				 </Dialog.Footer>
 			 </Dialog>
 
-				<h1 tabIndex="0" >Telkku {this.getFetchedDate()}</h1>
+				<h1 tabIndex="0" lang="fi" >Telkku {this.getFetchedDate()}</h1>
 				<Card>
 				<div class={style.cardHeader}>
+				<section>
 					<Formfield>
 					<Button tabIndex="0" ripple raised disabled={state.channels == null
 								|| (state.showChannelsAtSameTime == 1 
 									&& state.bCheckShowChannelsAtSameTime) 
 								|| state.showChannelsAtSameTime >= state.channels.length }
-							onClick={this.prevChannelSetClicked}>
+							onClick={this.prevChannelSetClicked}
+							aria-label="Aikaisemmat kanavat">
 					&lt;
 					</Button>
 					</Formfield>
@@ -1178,7 +1220,8 @@ export default class Telkku extends Component {
 							|| (state.showChannelsAtSameTime == 1
 								&& state.bCheckShowChannelsAtSameTime)
 							|| state.showChannelsAtSameTime >= state.channels.length }
-							onClick={this.nextChannelSetClicked}>
+							onClick={this.nextChannelSetClicked}
+							aria-label="Seuraavat kanavat">
 					&gt;
 					</Button>
 					</Formfield>
@@ -1265,15 +1308,19 @@ export default class Telkku extends Component {
 					Keskeytä lataus
 					</Button>
 					</Formfield>
+					</section>
 				</div>
+				
 				</Card><br/><br/>
-				<div class=" mdc-typography--caption"><h3 tabIndex="0">Ohjelmataulukko</h3>
+				<section>
+				<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" tabIndex="0">Ohjelmataulukko</h3>
 							<div class={style.cardHeader}><h3 lang="fi" tabIndex="0" >
 						-- Ohjelmataulukko, liikutaan hiirellä tai taulukon 
 						sisällä seuraavilla näppäimillä: 
-					alt+n = seuraava kanava, alt+p = edellinen kanava sekä 
-					alt+i = kanavan ohjelmiin. Ohelman kuvailun saa näkymään enterillä tai 
-					hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet.</h3></div>
+					alt+e = seuraava kanava, alt+k = edellinen kanava sekä 
+					alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai 
+					hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet. Taulukon yläpuolelle 
+					tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.</h3></div>
 							{state.bSearchButtonClicked && state.textSearch != null ? ' (haun tulokset)' : ''}</div>
 						<table id="programtable" style="width:100%"
 						ref={this.tablCntl}>
@@ -1282,7 +1329,9 @@ export default class Telkku extends Component {
 						<tr>{tabletds}</tr> 		
 						</tbody>
 						</table>
+					</section>
 				</div>
+				</Card>
 		);
 	}
 }

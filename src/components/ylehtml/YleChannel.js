@@ -33,6 +33,11 @@ export default function YleChannel(props) {
 				console.log("kkk");
 				return true;
 			}
+			if (endtTimeHours > currentHours)
+			{
+				console.log("kkk");
+				return false;
+			}
 			if (endtTime.getHours() === currenttime.getHours())
 			{
 				const endtTimeMinutes =  endtTime.getMinutes();

@@ -175,12 +175,12 @@ function AmppariShowProgram(props)
                         </Fragment> : null}
                     </div>
                     </div>
-                    <Dialog 
+                    <Dialog role="dialog" id="dialogprogram" aria-modal="true"
                                ref={scrollingDlgRef}>
                                 <Dialog.Header tabIndex="0" lang="fi">{props.channel}</Dialog.Header>
                                 <Dialog.Body scrollable={true}>
                                   <Card><div class="card-header">
-                                     <h3 tabIndex="0" class=" mdc-typography--title">
+                                     <h3 id="h1lprogram" tabIndex="0" class=" mdc-typography--title">
                                      {getProgramSymbol(props)} {getTime(props.data.timestamp)} 
                                      <space> </space> {props.data.title.toString()}</h3>
                                      <h3 tabIndex="0" class=" mdc-typography--title">
@@ -190,7 +190,7 @@ function AmppariShowProgram(props)
                                   </Card>
                                 </Dialog.Body>
                                 <Dialog.Footer>
-                                    <Dialog.FooterButton onCancel={onClickDisplayDialog} cancel={true} accept={true}>Sulje</Dialog.FooterButton>
+                                    <Dialog.FooterButton onCancel={onClickDisplayDialog} cancel={true} >Sulje</Dialog.FooterButton>
                                 </Dialog.Footer>
                     </Dialog> 
             </div>

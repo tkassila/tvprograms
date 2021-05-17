@@ -494,5 +494,5 @@ app.get('/ampparissa/:rest', (req, res) => {
   })
 
 app.listen(port, () => {
-  console.log(`Node server for tv- and radio-programs listening at http://localhost:${port}`)
+  console.log(`Node server for tv and radio programs listening at http://localhost:${port}`)
 })

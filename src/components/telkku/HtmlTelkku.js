@@ -342,60 +342,63 @@ export default class HtmlTelkku extends Component {
 			console.log(darkstyle);			
 		}
 
+		// +"mdc-theme" +darkstyle
 		return (
-			<div class={style.cardHeader +"mdc-theme" +darkstyle}>
-				<h1 tabIndex="0">Telkussa.fi {this.getFetchedDate()}</h1>
-				<Card>
-				<div tabIndex="0" class={style.cardHeader}>
+			<Card>
+			<div class={style.cardHeader}>
+				<h1 tabIndex="0" lang="fi">Telkussa.fi {this.getFetchedDate()}</h1>
+				
+				<div tabIndex="0" lang="fi" >
 						Aseta avattavan html sivun päivämääräksi jokin seuraavista:
                     </div>
 					<div class={style.cardHeader}>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(0)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(0)} 
 						           onClick={this.onClickSetDateString}>{this.getPlus1Day(0)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(1)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(1)} 
 						           onClick={this.onClickSetDateString}>{this.getPlus1Day(1)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(2)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(2)} 
 						           onClick={this.onClickSetDateString}>{this.getPlus1Day(2)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(3)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(3)} 
 						           onClick={this.onClickSetDateString}>{this.getPlus1Day(3)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(4)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(4)} 
 						          onClick={this.onClickSetDateString}>{this.getPlus1Day(4)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(5)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(5)} 
 						          onClick={this.onClickSetDateString}>{this.getPlus1Day(5)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(6)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(6)} 
 						          onClick={this.onClickSetDateString}>{this.getPlus1Day(6)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(7)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(7)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(7)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(8)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(8)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(8)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(9)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(9)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(9)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(10)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(10)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(10)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(11)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(11)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(11)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(12)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(12)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(12)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(13)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(13)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(13)}</a><space> </space>
-						<a tabIndex="0" href="." id={'dayname_'+this.getPlus1DayId(14)} 
+						<a tabIndex="0" href="." lang="fi" id={'dayname_'+this.getPlus1DayId(14)} 
 						            onClick={this.onClickSetDateString}>{this.getPlus1Day(14)}</a><br/>
 						</div>
-                    <div tabIndex="0" class={style.cardHeader}>
+                    <div tabIndex="0" lang="fi" class={style.cardHeader}>
 						Avaa uusi selain sivu klikkaamalla linkkejä:
                     </div>
 					<div class={style.cardHeader}>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>1</a><space> </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>2</a><space>   </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>3</a><space>   </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>4</a><space>   </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>5</a><space>   </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>6</a><space>   </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>nyt</a><space>   </space>
-						<a tabIndex="0" href="." onClick={this.onClickLink}>elokuva</a>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>1</a><space> </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>2</a><space>   </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>3</a><space>   </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>4</a><space>   </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>5</a><space>   </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>6</a><space>   </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>nyt</a><space>   </space>
+						<a tabIndex="0" href="." lang="fi" onClick={this.onClickLink}>elokuva</a>
 					</div>
-				</Card>
+				
 			</div>
+			</Card>
 		);
 	}
 }

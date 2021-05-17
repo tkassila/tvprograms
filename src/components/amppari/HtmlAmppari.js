@@ -167,27 +167,28 @@ export default class HtmlAmppari extends Component {
 			return <Select.Item id={i}>{child}</Select.Item>
 			});
 
-		return (
+		return (			
+			<Card>
 			<div class={style.cardHeader}>
-				<h1 tabIndex="0">Amppari.fi</h1>
-				<Card>
-				<div class={style.cardHeader}>
+				<h1 tabIndex="0" lang="fi" >Amppari.fi</h1>
+				<div class={style.cardHeader} tabIndex="0" lang="fi">
 						Valitse seuraavista:
                     </div>
 					<div class={style.cardHeader}>
-						<a id="aikalink_nyt" href="." onClick={this.onClickSelectedAika}>Nyt ja seuraavaksi</a><space> </space>
-						<a id="aikalink_tulevat" href="." onClick={this.onClickSelectedAika}>Tulevat</a><space> </space>
-						<a id="aikalink_paiva" href="." onClick={this.onClickSelectedAika}>Koko päivä</a><space> </space>
-						<a id="aikalink_ilta" href="." onClick={this.onClickSelectedAika}>Ilta (17-22)</a><space> </space>
-						<a id="aikalink_yo" href="." onClick={this.onClickSelectedAika}>Yö (22-01)</a><space> </space>
+						<a id="aikalink_nyt" lang="fi" href="." onClick={this.onClickSelectedAika}>Nyt ja seuraavaksi</a><space> </space>
+						<a id="aikalink_tulevat" lang="fi" href="." onClick={this.onClickSelectedAika}>Tulevat</a><space> </space>
+						<a id="aikalink_paiva" lang="fi" href="." onClick={this.onClickSelectedAika}>Koko päivä</a><space> </space>
+						<a id="aikalink_ilta" lang="fi" href="." onClick={this.onClickSelectedAika}>Ilta (17-22)</a><space> </space>
+						<a id="aikalink_yo" lang="fi" href="." onClick={this.onClickSelectedAika}>Yö (22-01)</a><space> </space>
 						<br/>
                     </div>
 					<div>
 						<Formfield>
-							<div class={style.cardHeader}>Kanavat<space>     </space>
+							<div class={style.cardHeader} lang="fi" >
+							<label for="idchannels">Kanavat:</label><space>     </space>
 							  <select tabIndex="0"
 									selectedIndex={this.state.selectedsuodatinindex}
-									preselected outlined 
+									preselected outlined id="idchannels"
 									onChange={(e)=>{
 										console.log("e.target.target");
 										console.log(e.target.text);
@@ -202,10 +203,11 @@ export default class HtmlAmppari extends Component {
 						</Formfield>
 
 						<Formfield>
-							<div class={style.cardHeader}>Ohjelmatyyppi<space>     </space>
+							<div class={style.cardHeader} lang="fi">
+							<label for="idchanneltype">Ohjelmatyyppi:</label><space>     </space><space>     </space>
 							  <select tabIndex="0"
 									selectedIndex={this.state.selectedTyyppiinindex}
-									preselected outlined 
+									preselected outlined id="idchanneltype"
 									onChange={(e)=>{
 										console.log("e.target.target");
 										console.log(e.target.text);
@@ -221,43 +223,43 @@ export default class HtmlAmppari extends Component {
 
 					</div>
 
-				<div class={style.cardHeader}>
+				<div class={style.cardHeader} lang="fi" tabIndex="0">
 						Avaa html sivu päivämäärän mukaan:
                     </div>
 					<div class={style.cardHeader}>
-						<a href="." id={'dayname_'+this.getPlus1DayId(0)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(0)} 
 						       onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(0)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(1)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(1)} 
 						            onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(1)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(2)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(2)} 
 						           onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(2)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(3)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(3)} 
 						           onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(3)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(4)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(4)} 
 						           onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(4)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(5)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(5)} 
 						          onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(5)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(6)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(6)} 
 							      onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(6)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(7)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(7)} 
 						             onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(7)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(8)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(8)} 
 						             onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(8)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(9)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(9)} 
 						           onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(9)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(10)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(10)} 
 							        onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(10)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(11)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(11)} 
 									onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(11)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(12)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(12)} 
 									onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(12)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(13)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(13)} 
 									onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(13)}</a><space> </space>
-						<a href="." id={'dayname_'+this.getPlus1DayId(14)} 
+						<a  lang="fi" href="." id={'dayname_'+this.getPlus1DayId(14)} 
 									onClick={this.onClickSetDateStringAHtml}>{this.getPlus1Day(14)}</a><br/>
 						</div>
-				</Card>
 			</div>
+			</Card>
 		);
 	}
 }

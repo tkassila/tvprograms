@@ -151,7 +151,7 @@ export default class App extends Component {
 					   themevalue={state.themevalue} />	
 					<HtmlAmppariRoute path="/htmlamppari" store={store}
 					   ref={this.ctrlHtmlAmppariRef}
-					   themevalue={state.themevalue} />						   				  
+					   themevalue={state.themevalue} />
 					<Profile path="/profile/" user="me" />
 					<Profile path="/profile/:user" />
 					<NotFound default />
