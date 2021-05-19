@@ -67,6 +67,7 @@ export default class YleHtml extends Component {
 	selectChannelRef = null;
 	checkBoxMovieRef =  null;
 	textFieldSearchRef = null;
+	checkshowdcurrentprogramsRef = null;
 
 	constructor(props)
 	{
@@ -132,6 +133,7 @@ export default class YleHtml extends Component {
 		this.checkBoxMovieRef = createRef();
 		this.tablCntl = createRef();
 		this.textFieldSearchRef = createRef();
+		this.checkshowdcurrentprogramsRef = createRef();
 
 		this.store.setStateNoneCallListeners({ schedules: {}, shedulescount: 0, 
 			shedulescallcount: 0, indService: -1,
@@ -1040,6 +1042,16 @@ export default class YleHtml extends Component {
 			&& this.state.selecteddate.getDay() === selDate.getDay())
 			return;
 		*/
+		const day = selDate;
+		const today = new Date(Date.now())
+		if (day.getDate() !== today.getDate())
+		{
+			if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
+			{
+				this.checkshowdcurrentprogramsRef.current.MDComponent.checked = false;
+				this.setState({ bshowdcurrentprograms: false});
+			}
+		}
         const emptyservices = [];
 		this.store.setState({ selecteddate: selDate });
 		this.setState({ selecteddate: selDate, selectedchannelindex: 0,
@@ -2272,6 +2284,7 @@ export default class YleHtml extends Component {
 						<Checkbox tabIndex="0" inputid="checkshowdcurrentprograms"
 						    labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
 							onChange={this.showdcurrentprograms} 
+							inputref={this.checkshowdcurrentprogramsRef}
 							 />
 					</Formfield>
 					<Formfield>

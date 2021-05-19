@@ -464,7 +464,16 @@ export default class YleMedia extends Component {
 			&& this.state.selecteddate.getDay() === selDate.getDay())
 			return;
 		*/
-		
+		const today = new Date(Date.now())
+		if (selDate.getDate() !== today.getDate())
+		{
+			if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
+			{
+				this.checkshowdcurrentprogramsRef.current.MDComponent.checked = false;
+				this.setState({ bshowdcurrentprograms: false});
+			}
+		}
+
         const emptyservices = [];
 		this.setState({ selecteddate: selDate,
             services: emptyservices, schedules: {}, currentservice: null 

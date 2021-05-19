@@ -85,6 +85,7 @@ export default class Amppari extends Component {
 	removerfunctionProgramType = null;
 	removerfunctionSearchProgram = null;
 	removerfunctionChannelType = null;
+	checkshowdcurrentprogramsRef = null;
 	bUnderFetch = false;
 
 	constructor(props)
@@ -148,6 +149,7 @@ export default class Amppari extends Component {
 		this.searchProgramRef = createRef();
 		this.programTypeRef = createRef();
 		this.tablCntl = createRef();
+		this.checkshowdcurrentprogramsRef = createRef();
 	
 	 }
 
@@ -592,7 +594,7 @@ export default class Amppari extends Component {
 		.then(response => { return response.text();})
 //		.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
 		.then(data => { 
-			if(Config.bDebug) 
+ 			if(Config.bDebug) 
 				{
 					console.log("fetchHtmlAmppariChannels 1.5"); 
 					//console.log("data");
@@ -1112,6 +1114,15 @@ export default class Amppari extends Component {
 			dayparameter = dayparameter.substring(ind +search.length).trim();
 		const parseddate = Date.parse(dayparameter);
 		const day = new Date(parseddate);
+		const today = new Date(Date.now())
+		if (day.getDate() !== today.getDate())
+		{
+			if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
+			{
+				this.checkshowdcurrentprogramsRef.current.MDComponent.checked = false;
+				this.setState({ bshowdcurrentprograms: false});
+			}
+		}
 		this.setState({selecteddate: day});	
 		this.fetchHtmlAmppariChannels(dayparameter);
 	}
@@ -2984,8 +2995,10 @@ export default class Amppari extends Component {
 
 						<Formfield>
 							<Checkbox tabIndex="0" lang="fi" inputid="checkshowdcurrentprograms"
-						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
+						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" 
+								checked={state.bshowdcurrentprograms}
 								onChange={this.showdcurrentprograms} 
+								inputref={this.checkshowdcurrentprogramsRef}
 							 />
 						</Formfield>
 						<Formfield>
