@@ -2261,7 +2261,7 @@ export default class YleHtml extends Component {
 							|| (state.showChannelsAtSameTime == 1
 								&& state.bCheckShowChannelsAtSameTime)
 							|| state.showChannelsAtSameTime >= state.schedules.length }
-							lang="fi" aria-label="Aikaisemmat kanavat"
+							lang="fi" aria-label="Seuraavat kanavat"
 							onClick={this.nextChannelSetClicked}>
 					&gt;
 					</Button>
@@ -2322,9 +2322,10 @@ export default class YleHtml extends Component {
 						onBlur={this.onBlurTextField}
 						ref={this.textFieldSearchRef} />
 					<space>          </space>
-						<Button tabIndex="0" lang="fi" aria-label="hae" ripple raised 
+						<Button tabIndex="0" lang="fi" ripple raised 
 							disabled={state.schedules == null || state.bUnderFetch}
-								onClick={this.searchTextFromChannelsClicked}>
+								onClick={this.searchTextFromChannelsClicked}
+								aria-label="Hae">
 						Hae
 						</Button>
 					</Formfield>
@@ -2349,7 +2350,8 @@ export default class YleHtml extends Component {
 					<space>          </space>
 					<Formfield>
 					<Button tabIndex="0" ripple raised disabled={!state.bUnderFetch }
-						 onClick={this.abortFetchClicked}>
+						 onClick={this.abortFetchClicked}
+						 aria-label="Keskeytä lataus">
 					Keskeytä lataus
 					</Button>
 					</Formfield>

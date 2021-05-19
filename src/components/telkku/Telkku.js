@@ -1275,7 +1275,8 @@ export default class Telkku extends Component {
 					<space>          </space>
 						<Button tabIndex="0" ripple raised 
 							disabled={state.channels == null || state.bUnderFetch}
-								onClick={this.searchTextFromChannelsClicked}>
+								onClick={this.searchTextFromChannelsClicked}
+								aria-label="Hae">
 						Hae
 						</Button>
 					</Formfield>

@@ -448,7 +448,8 @@ export default class SearchPrograms extends Component {
 					<space>          </space>
 						<Button tabIndex="0" ripple raised tabIndex="0" 
 								disabled={state.disabled}
-								onClick={this.searchTextFromChannelsClicked}>
+								onClick={this.searchTextFromChannelsClicked}
+								aria-label="Hae">
 						Hae
 						</Button>
 					</Formfield>				
