@@ -9,16 +9,8 @@ import 'preact-material-components/Switch/style.css';
  * This Address function is showing a programgrid or -list.
  */
 // class Address extends Component 
-class CheckBox extends Component
+function CheckBox(props) 
 {
-    constructor(props)
-	{
-		super(props);
-
-		this.state = {
-		}
-    }
-
     /*
        <Fragment>
                         <input lang="fi" type="checkbox" onChange={props.onChange} 
@@ -33,9 +25,6 @@ class CheckBox extends Component
                     </label>
                 </Fragment>
                 */
-
-    render(props, state) {
-
         return ( 
                 <Fragment>
                         <Switch lang="fi" type="checkbox" onChange={props.onChange} 
@@ -51,7 +40,6 @@ class CheckBox extends Component
                     </label>
                 </Fragment>
             );
-     }
 }
 
 export default CheckBox;
