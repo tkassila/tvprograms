@@ -1041,6 +1041,7 @@ export default class YleHtml extends Component {
 			return;
 		*/
         const emptyservices = [];
+		this.store.setState({ selecteddate: selDate });
 		this.setState({ selecteddate: selDate, selectedchannelindex: 0,
 			currentChannelSetIndex: 0,
             services: emptyservices, schedules: [], currentservice: null 
@@ -2197,7 +2198,7 @@ export default class YleHtml extends Component {
 							     onClick={this.onClickSetDateStringYle}>{this.getPlus1Day(1)}</a><space> </space>
 							<a href="." id={'dayname_'+this.getPlus1DayId(2)} 
 								 lang="fi"  aria-labelledby={this.getPlus1Day(2)}
-							     nClick={this.onClickSetDateStringYle}>{this.getPlus1Day(2)}</a><space> </space>
+							     onClick={this.onClickSetDateStringYle}>{this.getPlus1Day(2)}</a><space> </space>
 							<a href="." id={'dayname_'+this.getPlus1DayId(3)} 
 								 lang="fi"  aria-labelledby={this.getPlus1Day(3)}
 							     onClick={this.onClickSetDateStringYle}>{this.getPlus1Day(3)}</a><space> </space>
