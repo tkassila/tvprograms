@@ -2184,9 +2184,8 @@ export default class YleHtml extends Component {
 				<div class={style.cardHeader} onKeyUp={this.altPlusKeyUpProgramHeader}>
 						<h1 tabIndex="0" lang="fi" title={"Yle " +this.getFetchedDate()}>Yle {this.getFetchedDate()}</h1>`
 						<div role="radiogroup" aria-labelledby="idyleprogramdatasource">
-						<label id="idyleprogramdatasource" lang="fi" >
-							Tv tai radio-ohjelmat</label>
 						<FormField>
+							<label id="idyleprogramdatasource" lang="fi" >Tv tai radio-ohjelmat</label>
 							<Radio tabIndex="0" id="rtv" name='opttv' checked={state.progsource === 'rtv'}
 								onChange={this.radioProgSourceChanged} ></Radio>
 							<label for="rtv">TV</label>
