@@ -1,7 +1,12 @@
 # preact material app
 
 This app is showing tv and radio programs on a browser. To get json or xml data from servers, it is calling local proxy node server (on port 9090). You can show also descriptions and search a text from canals or programs. The app is also working with screenreaders.
-It has two page theme: white and black. It has bigger fonts.
+It has two page theme: white and black. It is using bigger fonts.
+
+You can use a mouse ór screenreader and some keyboard alt commands to navigate and set focus inside of localcal program channnel table. Like alt+s = next channel, alt+k = prev. channel and alt+o into inside of channel title. Can set focus "ohjelmataulukko" title, when pressing alt+t.
+
+Ohjelmataulukko
+-- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet. Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.
 
 # Developer install
 
