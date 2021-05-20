@@ -27,7 +27,7 @@ It has two page theme: white and black. It has bigger fonts.
 1. Download proxyserver.zip 
 2. Install node and curl apps.
 3. Unzip proxyserver.zip
-4. Add installed curl path into common path in a computer where node server.js should to find it
+4. Add installed curl path and node path if needed into common path in a computer where node server.js should to find it
 5. cd proxyserver
 6. start proxy server: node server.js
    This node server is using curl app, when it is loading html from different tv program html servers!
