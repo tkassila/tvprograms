@@ -66,17 +66,18 @@ checkbox:focus
 		background-color: black !important;
 }
 
-checkbox:focus, a:focus
+checkbox:focus
  {  
 	color: yellow;
 	background-color: black;
+	border-color: black;
 }
 
 a:focus
  {  
 	color: yellow;
 	background-color: black;
-  border-color: #FFF;;
+  	border-color: #FFF;
 }
 
 .mdc-theme--dark a:focus
@@ -114,10 +115,6 @@ button, input[type="text"], [type="number"], select {
 	outline: 1px solid black;  
 }
 
-input[type="checkbox"] {
-	color: black;
-	background-color: white;  
-}
 
 /* input[type="text"]:focus, .mdc-text-field:focus */
 input:focus, button:focus, select:focus :not(.mdc-theme--dark select), 
@@ -154,6 +151,14 @@ select:focus
 	caret-color: auto;
   background-color: black;  
 }
+
+#idcheckTableBorders:focus
+{
+	outline: 5px solid black;  
+	caret-color: auto;
+  	background-color: white;  
+}
+
 /* input[type="text"] .mdc-theme--dark input[type="text"], .mdc-theme--dark .mdc-text-field:focus */
 .mdc-theme--dark input[type="number"], .mdc-theme--dark button, 
 .mdc-theme--dark input[type="text"]
@@ -212,7 +217,6 @@ select
 }
 
 .mdc-theme--dark button,
-.mdc-theme--dark checkbox
  {
 	outline: 1px solid white;  
   color: #FFF;
@@ -262,3 +266,47 @@ select
   caret-color: auto;
   background-color: black;
 }
+
+/*
+input[type='checkbox']{
+	width: 14px !important;
+	height: 14px !important;
+	margin: 5px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	outline: 3px solid gray;
+	box-shadow: none;
+	font-size: 0.8em;
+	text-align: center;
+	line-height: 1em;
+	background: black;
+  }
+  */
+
+input[type='checkbox']:unchecked{
+	width: 14px !important;
+	height: 14px !important;
+	margin: 5px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	outline: 4px solid gray;
+	box-shadow: none;
+	font-size: 1.0em;
+	text-align: center;
+	line-height: 1.2em;
+	background: white;
+}
+
+  input[type='checkbox']:checked:after {
+	content: '✔';
+	color: white;
+	background: black;
+  }
+
+  input[type='checkbox']:focus {
+	outline: 4px solid black;  
+  }

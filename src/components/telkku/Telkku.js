@@ -20,7 +20,7 @@ import Dialog from 'preact-material-components/Dialog';
 import 'preact-material-components/Dialog/style.css';
 import 'preact-material-components/Theme/style.css';
 
-import Checkbox from '../checkbox/CheckBox';
+import SwitchCheckbox from '../checkbox/CheckBox';
 
 import AbortController from "abort-controller";
 import style from './style';
@@ -1227,13 +1227,13 @@ export default class Telkku extends Component {
 					</Formfield>
 
 					<Formfield>
-						<Checkbox tabIndex="0" onChange={this.showAllDescriptions}
+						<SwitchCheckbox tabIndex="0" onChange={this.showAllDescriptions}
 							ref={this.showAllDescrRef}
 							inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 					</Formfield>
 					<Formfield>
-						<Checkbox tabIndex="0" onChange={this.showOneChannel}
+						<SwitchCheckbox tabIndex="0" onChange={this.showOneChannel}
 							ref={this.showOneChannelRef}
 							inputid="checkshowonechannel"
 						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
@@ -1297,7 +1297,7 @@ export default class Telkku extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<Checkbox tabIndex="0" onChange={this.showTableBorders}
+						<SwitchCheckbox tabIndex="0" onChange={this.showTableBorders}
 							ref={this.showTableBordersRef}
 							inputid="checkTableBorders"
 						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />

@@ -22,7 +22,7 @@ import TextField from 'preact-material-components/TextField';
 import 'preact-material-components/TextField/style.css';
 // import 'preact-material-components/Theme/style.css';
 
-import Checkbox from '../checkbox/CheckBox';
+import SwitchCheckbox from '../checkbox/CheckBox';
 
 import AbortController from "abort-controller";
 import style from './style';
@@ -2280,20 +2280,20 @@ export default class YleHtml extends Component {
 					</Formfield>
 
 					<Formfield>
-						<Checkbox tabIndex="0" inputid="checkshowdcurrentprograms"
+						<SwitchCheckbox tabIndex="0" inputid="checkshowdcurrentprograms"
 						    labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
 							onChange={this.showdcurrentprograms} 
 							inputref={this.checkshowdcurrentprogramsRef}
 							 />
 					</Formfield>
 					<Formfield>
-						<Checkbox tabIndex="0" inputid="checkshowdescribtions"
+						<SwitchCheckbox tabIndex="0" inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions}
 							onChange={this.showAllDescriptions} 
 							ref={this.showAllDescrRef} />
 					</Formfield>
 					<Formfield>
-						<Checkbox tabIndex="0" onChange={this.showOneChannel}
+						<SwitchCheckbox tabIndex="0" onChange={this.showOneChannel}
 							inputid="checkshowonechannel"
 							labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime}
 							ref={this.showOneChannelRef} />
@@ -2344,14 +2344,14 @@ export default class YleHtml extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<Checkbox tabIndex="0" inputid="checkTableBorders"
+						<SwitchCheckbox tabIndex="0" inputid="idcheckTableBorders"
 						labeltext="Näytä taulun raamit" checked={state.bShowTableBorder}
 							onChange={this.showTableBorders}
 							ref={this.showTableBordersRef} />
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<Checkbox tabIndex="0" inputid="checkshowonlymovies"
+						<SwitchCheckbox tabIndex="0" inputid="checkshowonlymovies"
 						labeltext="Näytä elokuvat" 
 							disabled={state.progsource != 'rtv'}
 							onChange={this.showOnlyMovies}

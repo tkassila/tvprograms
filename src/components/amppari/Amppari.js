@@ -24,7 +24,7 @@ import AmppariChannel from './AmppariChannel';
 import ChannelTypes from './ChannelTypes';
 import ProgramTypes from './ProgramTypes';
 import SearchPrograms from './SearchPrograms';
-import Checkbox from '../checkbox/CheckBox';
+import SwitchCheckbox from '../checkbox/CheckBox';
 
 // import store from '../../utils/store';
 
@@ -2994,7 +2994,7 @@ export default class Amppari extends Component {
 						</Formfield>
 
 						<Formfield>
-							<Checkbox tabIndex="0" lang="fi" inputid="checkshowdcurrentprograms"
+							<SwitchCheckbox tabIndex="0" lang="fi" inputid="checkshowdcurrentprograms"
 						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" 
 								checked={state.bshowdcurrentprograms}
 								onChange={this.showdcurrentprograms} 
@@ -3002,13 +3002,13 @@ export default class Amppari extends Component {
 							 />
 						</Formfield>
 						<Formfield>
-						<Checkbox onChange={this.showAllDescriptions}
+						<SwitchCheckbox onChange={this.showAllDescriptions}
 							ref={this.showAllDescrRef}
 							inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 						</Formfield>
 						<Formfield>
-						<Checkbox onChange={this.showOneChannel}
+						<SwitchCheckbox onChange={this.showOneChannel}
 							ref={this.showOneChannelRef}
 							inputid="checkshowonechannel"
 						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
@@ -3048,7 +3048,7 @@ export default class Amppari extends Component {
 						ref={this.searchProgramRef}	/>
 					<space>          </space>
 					<Formfield>
-						<Checkbox onChange={this.showTableBorders}
+						<SwitchCheckbox onChange={this.showTableBorders}
 							ref={this.showTableBordersRef}	lang="fi" 						
 							inputid="checkTableBorders"
 						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
