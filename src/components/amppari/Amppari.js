@@ -2911,9 +2911,11 @@ export default class Amppari extends Component {
 		}
 		*/
 
+		/*
 		  let msgdiv = null;
 		  if ((state.errmsg != null))
 	          msgdiv = <p className={"p" +cssDark} tabIndex="0" style={style.political_p} aria-label={state.errmsg}></p>;
+		*/
 
 		return (
 			<Card>
@@ -2994,7 +2996,7 @@ export default class Amppari extends Component {
 						</Formfield>
 
 						<Formfield>
-							<SwitchCheckbox tabIndex="0" lang="fi" inputid="checkshowdcurrentprograms"
+							<SwitchCheckbox lang="fi" inputid="checkshowdcurrentprograms"
 						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" 
 								checked={state.bshowdcurrentprograms}
 								onChange={this.showdcurrentprograms} 
@@ -3062,7 +3064,7 @@ export default class Amppari extends Component {
 					</div>
 				</Card>
 				<div>
-					{msgdiv}
+							<div style={{ "background-color": 'red', color: "yellow" } }>{state.errmsg}</div>
 							<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" lang="fi" tabIndex="0">Ohjelmataulukko</h3>
 							<div class={style.cardHeader}><h3 lang="fi" tabIndex="0" >
 						-- Ohjelmataulukko, liikutaan hiirellä tai taulukon 

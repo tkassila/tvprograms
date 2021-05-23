@@ -163,7 +163,7 @@ export default class Telkku extends Component {
 			{
 				console.error("error");
 				console.error(error);
-				this.setState({ errmsg: error.toString(),
+				this.setState({ errmsg: error.message,
 					bUnderFetch: false })
 				this.scrollingDlgRef.current.MDComponent.close();
 				return;	
@@ -198,7 +198,7 @@ export default class Telkku extends Component {
 			console.log(channelurl); 
 		}
 
-		this.setState({ channels: null});
+		this.setState({ channels: null, errmsg: null});
 
 		let fetched = null;
 		// 	crossDomain:true,
@@ -1227,13 +1227,13 @@ export default class Telkku extends Component {
 					</Formfield>
 
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" onChange={this.showAllDescriptions}
+						<SwitchCheckbox onChange={this.showAllDescriptions}
 							ref={this.showAllDescrRef}
 							inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 					</Formfield>
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" onChange={this.showOneChannel}
+						<SwitchCheckbox onChange={this.showOneChannel}
 							ref={this.showOneChannelRef}
 							inputid="checkshowonechannel"
 						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
@@ -1297,7 +1297,7 @@ export default class Telkku extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" onChange={this.showTableBorders}
+						<SwitchCheckbox nChange={this.showTableBorders}
 							ref={this.showTableBordersRef}
 							inputid="checkTableBorders"
 						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
@@ -1314,6 +1314,7 @@ export default class Telkku extends Component {
 				
 				</Card><br/><br/>
 				<section>
+				<div style={{ "background-color": 'red', color: "yellow" } }>{state.errmsg}</div>
 				<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" tabIndex="0">Ohjelmataulukko</h3>
 							<div class={style.cardHeader}><h3 lang="fi" tabIndex="0" >
 						-- Ohjelmataulukko, liikutaan hiirellä tai taulukon 

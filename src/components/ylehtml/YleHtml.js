@@ -834,6 +834,7 @@ export default class YleHtml extends Component {
 		}
 
 		let url = fetch_url +this.getTypeParamAndValue(progsource, selecteddate);
+		this.setState({ errmsg: '' });
 		fetch(url,
 		 {
 //			Host: 'localhost:9090',
@@ -2280,20 +2281,20 @@ export default class YleHtml extends Component {
 					</Formfield>
 
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" inputid="checkshowdcurrentprograms"
+						<SwitchCheckbox inputid="checkshowdcurrentprograms"
 						    labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
 							onChange={this.showdcurrentprograms} 
 							inputref={this.checkshowdcurrentprogramsRef}
 							 />
 					</Formfield>
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" inputid="checkshowdescribtions"
+						<SwitchCheckbox  inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions}
 							onChange={this.showAllDescriptions} 
 							ref={this.showAllDescrRef} />
 					</Formfield>
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" onChange={this.showOneChannel}
+						<SwitchCheckbox onChange={this.showOneChannel}
 							inputid="checkshowonechannel"
 							labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime}
 							ref={this.showOneChannelRef} />
@@ -2344,14 +2345,14 @@ export default class YleHtml extends Component {
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" inputid="idcheckTableBorders"
+						<SwitchCheckbox inputid="idcheckTableBorders"
 						labeltext="Näytä taulun raamit" checked={state.bShowTableBorder}
 							onChange={this.showTableBorders}
 							ref={this.showTableBordersRef} />
 					</Formfield>
 					<space>          </space>
 					<Formfield>
-						<SwitchCheckbox tabIndex="0" inputid="checkshowonlymovies"
+						<SwitchCheckbox inputid="checkshowonlymovies"
 						labeltext="Näytä elokuvat" 
 							disabled={state.progsource != 'rtv'}
 							onChange={this.showOnlyMovies}
