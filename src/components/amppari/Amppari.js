@@ -1434,7 +1434,7 @@ export default class Amppari extends Component {
 	oldProgram = (currProg, currtime, nextProg) =>
 	{
 		const selectedtyyppi = this.state.selectedtyyppi;
-		if (nextProg == null && selectedtyyppi != 'kaikki')
+		if (selectedtyyppi != 'kaikki')
 		{
 			nextProg = this.getNextProgOf(currProg);
 		}
