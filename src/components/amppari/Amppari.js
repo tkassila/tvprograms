@@ -1431,6 +1431,106 @@ export default class Amppari extends Component {
 	}
 	*/
 
+	oldProgram = (currProg, currtime, nextProg) =>
+	{
+		const selectedtyyppi = this.state.selectedtyyppi;
+		if (nextProg == null && selectedtyyppi != 'kaikki')
+		{
+			nextProg = this.getNextProgOf(currProg);
+		}
+		return this.oldProgramWithNextProg(currProg, currtime, nextProg)
+	}
+
+	getNextProgOf = (currProg) =>
+	{
+		if (currProg === null || currProg === undefined)
+			return null;
+		let ret = null;
+		const fetchitems = this.state.fetcheditems;
+		if (fetchitems === null || fetchitems === undefined)
+			return null;
+		let foundedChannel = null;
+		let max = fetchitems.length;
+		let ch = null, i = 0;
+		for(i = 0; i < max; i++)
+		{
+			ch = fetchitems[i];
+			if (ch == undefined || ch === null)
+				continue;
+			if (ch.title !== currProg.channel )
+				continue
+			foundedChannel = ch;
+			break;
+		}
+		if (foundedChannel)
+		{
+			let nextPropgram = null;
+			let foundedProg = null;
+			let max = foundedChannel.channelprograms.length;
+			const progs = foundedChannel.channelprograms;
+			let prog = null;
+			for(i = 0; i < max; i++)
+			{
+				prog = progs[i];
+				if (prog == undefined || prog === null)
+					continue;
+				if (foundedProg)
+				 {
+					nextPropgram = prog;
+					break;
+				 }
+				if (prog.id !== currProg.id )
+					continue;
+				foundedProg = prog;
+			}	
+			return nextPropgram;
+		}
+		return ret;
+	}
+
+	oldProgramWithNextProg = (program, currenttime, nextprogram) =>
+    {
+        const startTime = new Date(program.timestamp * 1000);
+        let endtTime = null;
+        let endtTimeHours = null;
+        if (!nextprogram)
+            return false;
+        if (nextprogram)
+        {
+            endtTime = new Date(nextprogram.timestamp * 1000);
+            endtTimeHours = endtTime.getHours();
+        }
+
+       	if (endtTime > currenttime)
+		{
+			// console.log("kkk");
+			return false;
+		}
+		if (endtTime < currenttime)
+		{
+			// console.log("kkk");
+			return true;
+		}
+
+        const currentHours =  currenttime.getHours();
+        if (endtTimeHours && endtTimeHours < currentHours)
+        {
+            console.log("kkk");
+            return true;
+        }
+        if (endtTimeHours && endtTime.getHours() === currenttime.getHours())
+        {
+            const endtTimeMinutes =  endtTime.getMinutes();
+            const currentMinutes =  currenttime.getMinutes();
+            if( endtTimeMinutes < currentMinutes)
+            {
+                console.log("kkk");
+                return true;
+            }
+        }
+        return false;
+    }
+
 	getTableHeadersAndTableRowsAfterChannels = () =>
 	{
 		let headers = null;
@@ -1485,6 +1585,7 @@ export default class Amppari extends Component {
 						selectedtyyppi={this.state.selectedtyyppi}
 						showSearch={this.state.bSearchButtonClicked && this.state.textSearch != null}
 						getPOfIndex={this.getPOfIndex}
+						oldProgram={this.oldProgram}
 						currenttime = {currenttime}
 						bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 						displayAllDescriptions={this.state.bDisplayAllDescriptions} />;
@@ -1503,6 +1604,7 @@ export default class Amppari extends Component {
 							showSearch={this.state.bSearchButtonClicked && this.state.textSearch != null}
 							selectedtyyppi={this.state.selectedtyyppi}
 							getPOfIndex={this.getPOfIndex}
+							oldProgram={this.oldProgram}
 							currenttime = {currenttime}
 							bshowdcurrentprograms={this.state.bshowdcurrentprograms}
 							themevalue={this.props.themevalue}
@@ -1555,6 +1657,7 @@ export default class Amppari extends Component {
 										&& this.state.textSearch != null}
 									selectedtyyppi={this.state.selectedtyyppi}
 									getPOfIndex={this.getPOfIndex}
+									oldProgram={this.oldProgram}
 									currenttime = {currenttime}
 									bshowdcurrentprograms={this.state.bshowdcurrentprograms}		
 									themevalue={this.props.themevalue}
@@ -1578,6 +1681,7 @@ export default class Amppari extends Component {
 									&& this.state.textSearch != null}
 								selectedtyyppi={this.state.selectedtyyppi}
 								getPOfIndex={this.getPOfIndex}
+								oldProgram={this.oldProgram}
 								currenttime = {currenttime}
 								bshowdcurrentprograms={this.state.bshowdcurrentprograms}	
 								themevalue={this.props.themevalue}
@@ -3057,7 +3161,8 @@ export default class Amppari extends Component {
 					</Formfield>
 					  <ProgramTypes disabled={state.fetcheditems == null 
 						|| state.fetcheditems.length == 0} store={this.store}
-						ref={this.programTypeRef} setRemoverFunction={this.setRemoverFunction} /> 
+						ref={this.programTypeRef} setRemoverFunction={this.setRemoverFunction}
+						bshowdcurrentprograms={props.bshowdcurrentprograms} /> 
        				  <ChannelTypes disabled={state.fetcheditems == null 
 						|| state.fetcheditems.length == 0} store={this.store}
 						ref={this.channelTypeRef} setRemoverFunction={this.setRemoverFunction} />

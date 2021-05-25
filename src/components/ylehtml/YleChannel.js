@@ -28,6 +28,17 @@ export default function YleChannel(props) {
 			const endtTime = new Date(program.endDate);
 			const endtTimeHours =  endtTime.getHours();
 			const currentHours =  currenttime.getHours();
+			if (endtTime > currenttime)
+			{
+				// console.log("kkk");
+				return false;
+			}
+			if (endtTime < currenttime)
+			{
+				// console.log("kkk");
+				return true;
+			}
+
 			if (endtTimeHours < currentHours)
 			{
 				console.log("kkk");
@@ -68,12 +79,13 @@ export default function YleChannel(props) {
 				if ((props.data && s.status != 'schedule-list__no-data')
 				 	/* && (!props.bShowOnlyMovies || 
 					(props.bShowOnlyMovies && s.movie )) */ )
-				{					
-					if ((!props.bShowOnlyMovies && 
-						(!props.bshowdcurrentprograms || props.bshowdcurrentprograms 
-							&& !oldProgram(s, props.currenttime))) || 
+				{ 
+					/*					
+					if ((!props.bShowOnlyMovies &&
+						(!props.bshowdcurrentprograms || (props.bshowdcurrentprograms 
+							&& !oldProgram(s, props.currenttime)))) */ /* || 
 						(props.bShowOnlyMovies && s.movie && (!props.bshowdcurrentprograms 
-							|| props.bshowdcurrentprograms && !oldProgram(s, props.currenttime)) ))
+							|| (props.bshowdcurrentprograms && !oldProgram(s, props.currenttime))) )  ) */
 					return <YleProgram id={k} data={s} 
 						selectedcategory={props.selectedcategory} 
 						bSvLang={props.bSvLang} 
@@ -85,6 +97,38 @@ export default function YleChannel(props) {
 						getPOfIndex={props.getPOfIndex} />;
 				}
 		  });
+
+		  
+		  if (props.bShowOnlyMovies && progs)
+		  {
+			let progs2 = [];
+			Array.from(progs).forEach(item => {
+				if (item.props.data.movie)
+				{
+					console.log("movie");
+					progs2.push(item);
+				}
+			});
+			progs = progs2;
+		  }
+
+		  if (props.bshowdcurrentprograms && progs)
+		  {
+			let progs1 = [];
+			Array.from(progs).forEach(item => {
+				if (item.props.data.movie)
+				{
+					console.log("movie");
+				}
+				if (!oldProgram(item.props.data, props.currenttime))
+				{
+					console.log("!oldProgram");
+					progs1.push(item);
+				}
+			});
+			progs = progs1;
+	       }
+
 		  return progs;
 		}
 

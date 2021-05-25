@@ -8,38 +8,6 @@ import AmppariShowProgram from './AmppariShowProgram';
 // class Address extends Component 
 function AmppariChannel(props)
 {
-
-    const oldProgram =(program, currenttime, nextprogram) =>
-    {
-        const startTime = new Date(program.timestamp * 1000);
-        let endtTime = null;
-        let endtTimeHours = null;
-        if (!nextprogram)
-            return false;
-        if (nextprogram)
-        {
-            endtTime = new Date(nextprogram.timestamp * 1000);
-            endtTimeHours = endtTime.getHours();
-        }
-        const currentHours =  currenttime.getHours();
-        if (endtTimeHours && endtTimeHours < currentHours)
-        {
-            console.log("kkk");
-            return true;
-        }
-        if (endtTimeHours && endtTime.getHours() === currenttime.getHours())
-        {
-            const endtTimeMinutes =  endtTime.getMinutes();
-            const currentMinutes =  currenttime.getMinutes();
-            if( endtTimeMinutes < currentMinutes)
-            {
-                console.log("kkk");
-                return true;
-            }
-        }
-        return false;
-    }
-
        // const cssDark = useContext(CssDark);
         let displayitems = null;
         /*
@@ -87,7 +55,7 @@ function AmppariChannel(props)
                     nextprogram = null;
                     if ((i+1) < max)
                         nextprogram = filteredchannels[i+1];
-                    if (!oldProgram(program, props.currenttime, nextprogram))
+                    if (!props.oldProgram(program, props.currenttime, nextprogram))
                         filteredchannels1.push(program);
                 }
                 filteredchannels = filteredchannels1;

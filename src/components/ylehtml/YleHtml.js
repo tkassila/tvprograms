@@ -1267,6 +1267,18 @@ export default class YleHtml extends Component {
 			console.log(id);
 		}
 		this.store.setState({schedules: null});
+		if (this.checkBoxMovieRef.current)
+		{
+			if (id != 'rtv')
+			{
+				this.checkBoxMovieRef.current.disabled = true;
+				if (this.checkBoxMovieRef.current.checked)
+					this.checkBoxMovieRef.current.checked = false;
+			}
+			else
+				this.checkBoxMovieRef.current.disabled = false;
+		}
+
 		this.setState({ progsource: id, bShowOnlyMovies: false, schedules: null});
 		this.checkBoxMovieRef.current.checked = false;
 	}
@@ -2356,7 +2368,7 @@ export default class YleHtml extends Component {
 						labeltext="Näytä elokuvat" 
 							disabled={state.progsource != 'rtv'}
 							onChange={this.showOnlyMovies}
-							ref={this.checkBoxMovieRef}
+							inputref={this.checkBoxMovieRef}
 							checked={state.progsource != 'rtv' && state.bShowOnlyMovies 
 							  || state.progsource == 'rtv' && state.bShowOnlyMovies}
 							 />
