@@ -105,7 +105,8 @@ export default function YleChannel(props) {
 			Array.from(progs).forEach(item => {
 				if (item.props.data.movie)
 				{
-					console.log("movie");
+					if(Config.bDebug)
+						console.log("movie");
 					progs2.push(item);
 				}
 			});
@@ -118,11 +119,13 @@ export default function YleChannel(props) {
 			Array.from(progs).forEach(item => {
 				if (item.props.data.movie)
 				{
-					console.log("movie");
+					if(Config.bDebug)
+						console.log("movie");
 				}
 				if (!oldProgram(item.props.data, props.currenttime))
 				{
-					console.log("!oldProgram");
+					if (Config.bDebug)
+						console.log("!oldProgram");
 					progs1.push(item);
 				}
 			});
@@ -134,12 +137,14 @@ export default function YleChannel(props) {
 
 		const onfocusoutfunc = (e) =>
 		{
-			console.log("onfocusoutfunc");
+			if (Config.bDebug)
+				console.log("onfocusoutfunc");
 		}
 
 		const onfocusfunc = (e) =>
 		{
-			console.log("onfocusfunc");
+			if (Config.bDebug)
+				console.log("onfocusfunc");
 		}
 
 		return (			

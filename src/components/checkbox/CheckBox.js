@@ -1,5 +1,6 @@
-import {h, Fragment, Component, createRef } from 'preact';
-import { useState, useRef } from 'preact/hooks';
+import {h, Fragment, Component, createRef, render } from 'preact';
+import { useRef } from 'preact/hooks';
+// import { forwardRef } from 'preact/compat';
 import Config from '../../utils/Config';
 import './index.css';
 //import Switch from 'preact-material-components/Switch';
@@ -9,12 +10,32 @@ import './index.css';
  * This Address function is showing a programgrid or -list.
  */
 // class Address extends Component 
-function SwitchCheckBox(props) 
+class SwitchCheckBox extends Component 
+// function SwitchCheckBox(props) /* = forwardRef((props, ref) => */
 {
+    constructor(props)
+	{
+		super(props);
+		if(Config.bDebug) 
+		{
+			console.log("SwitchCheckBox.js");
+			console.log("props");
+			console.log(props);
+		}
+
+		this.state = {
+			errmsg: null,
+		}
+		
+		this.chechRef = createRef();
+	
+	 }
+
+    //const refcomp = useRef(null);
     /*
        <Fragment>
 
-        <Switch lang="fi" tabIndex="0" type="checkbox" onChange={props.onChange} 
+        <Switch lang="fi" tabIndex="0" type="checkbox" onChange={props.onChange} .
                             ref={props.inputref === undefined ? undefined : props.inputref}                     
                             id={props.inputid === undefined ? 'idcheckboxundef' : props.inputid}
                             checked={props.checked === undefined ? false : props.checked}
@@ -31,11 +52,13 @@ function SwitchCheckBox(props)
                     </label>
                 </Fragment>
                 */
-        return ( 
+     render(props, state)
+     {
+        return (
                 <Fragment>
                         <input lang="fi" tabIndex="0" type="checkbox" onChange={props.onChange} 
                             className="form-check-input filled-in" 
-                            ref={props.inputref === undefined ? undefined : props.inputref}                     
+                            ref={props.propref}                     
                             id={props.inputid === undefined ? 'idcheckboxundef' : props.inputid}
                             checked={props.checked === undefined ? false : props.checked}
                              />
@@ -46,7 +69,8 @@ function SwitchCheckBox(props)
                             {props.labeltext}
                     </label>
                 </Fragment>
-            );
+        );
+     }
 }
 
 export default SwitchCheckBox;

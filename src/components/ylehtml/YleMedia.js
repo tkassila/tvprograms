@@ -339,9 +339,12 @@ export default class YleMedia extends Component {
 
 	getFetchedDate = () =>
 	{
-		console.log("getFetchedDate");
-		console.log("this.state.selecteddate");
-		console.log(store.getState().selecteddate);
+		if (Config.bDebug)
+		{
+			console.log("getFetchedDate");
+			console.log("this.state.selecteddate");
+			console.log(store.getState().selecteddate);
+		}
 		let today = store.getState().selecteddate;
 		if (typeof today === 'string')
 			today = Date.parse(today);

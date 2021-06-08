@@ -56,6 +56,7 @@ export default class YleHtml extends Component {
 	abortController = null;
     abortSignal = null;
 	tablCntl = null;
+	showOneChannelRef = null;
 
 	currentservice = null;
 	services = null;
@@ -68,6 +69,7 @@ export default class YleHtml extends Component {
 	checkBoxMovieRef =  null;
 	textFieldSearchRef = null;
 	checkshowdcurrentprogramsRef = null;
+	showTableBordersRef = null;
 
 	constructor(props)
 	{
@@ -134,6 +136,8 @@ export default class YleHtml extends Component {
 		this.tablCntl = createRef();
 		this.textFieldSearchRef = createRef();
 		this.checkshowdcurrentprogramsRef = createRef();
+		this.showOneChannelRef = createRef();
+		this.showTableBordersRef = createRef();
 
 		this.store.setStateNoneCallListeners({ schedules: {}, shedulescount: 0, 
 			shedulescallcount: 0, indService: -1,
@@ -162,8 +166,11 @@ export default class YleHtml extends Component {
 		if (path === undefined || path === null || path.length === 0)
 			return null;
 
-		console.log("path");
-		console.log(path);
+		if (Config.bDebug)
+		{
+			console.log("path");
+			console.log(path);
+		}
 
 		let ret = -1;
 		let i = 0, max = path.length;
@@ -191,8 +198,11 @@ export default class YleHtml extends Component {
 		if (path === undefined || path === null || path.length === 0)
 			return null;
 
-		console.log("path");
-		console.log(path);
+		if (Config.bDebug)
+		{
+			console.log("path");
+			console.log(path);
+		}
 
 		let ret = -1;
 		let i = 0, max = path.length;
@@ -248,38 +258,44 @@ export default class YleHtml extends Component {
 		e = e || window.event;
 		let keyCode = e.keyCode || e.which,
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
-
-			console.log("pressed");
+			if (Config.bDebug)
+				console.log("pressed");
 		if (e.altKey) {
-			console.log("control key");
-			console.log("e.altKey");
-			console.log(e.altKey);
-			console.log("keyCode");
-			console.log(keyCode);
-			console.log("e.keyCode");
-			console.log(e.keyCode);
-			console.log("e");
-			console.log(e);
+			if (Config.bDebug)
+			{
+				console.log("control key");
+				console.log("e.altKey");
+				console.log(e.altKey);
+				console.log("keyCode");
+				console.log(keyCode);
+				console.log("e.keyCode");
+				console.log(e.keyCode);
+				console.log("e");
+				console.log(e);
+			}
 
 			let row = this.tablCntl.current.rows[1];
 			const cols = row.cells;
 			const currColInd = row.colIndex;
 			const lenCols = cols.length;
 			const currentCol = row.closest('td');
-			console.log("--- row");
-			console.log(row);
-			console.log("--- cols");
-			console.log(cols);
-			console.log("--- lenCols");
-			console.log(lenCols);
-			console.log("--- currColInd");
-			console.log(currColInd);
-			console.log("--- currentCol");
-			console.log(currentCol);
-			
-			console.log("--- this.tablCntl.current");
-			console.log(this.tablCntl.current);
-			
+			if (Config.bDebug)
+			{
+				console.log("--- row");
+				console.log(row);
+				console.log("--- cols");
+				console.log(cols);
+				console.log("--- lenCols");
+				console.log(lenCols);
+				console.log("--- currColInd");
+				console.log(currColInd);
+				console.log("--- currentCol");
+				console.log(currentCol);
+				
+				console.log("--- this.tablCntl.current");
+				console.log(this.tablCntl.current);
+			}
+
 			let currentColInd = null;
 
 			// .item(0).innerHTML
@@ -316,8 +332,11 @@ export default class YleHtml extends Component {
 					// document.getElementById("tablecol" +(currentColInd+1)).focus(); 				
 					if (nextcol)
 					{
-						console.log("nextcol");
-						console.log(nextcol);
+						if (Config.bDebug)
+						{
+							console.log("nextcol");
+							console.log(nextcol);
+						}
 					    nextcol.focus();
 						// this.simulateTabKey(nextcol);
 						// document.getElementById("tablecol" +(currentColInd+1)).focus(); 
@@ -1047,12 +1066,17 @@ export default class YleHtml extends Component {
 		const today = new Date(Date.now())
 		if (day.getDate() !== today.getDate())
 		{
-			if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
+			if (this.checkshowdcurrentprogramsRef.current.value)
 			{
-				this.checkshowdcurrentprogramsRef.current.MDComponent.checked = false;
+				this.checkshowdcurrentprogramsRef.current.value = false;
 				this.setState({ bshowdcurrentprograms: false});
-			}
+			}			
+			this.checkshowdcurrentprogramsRef.current.disabled = true;
 		}
+		else
+		if (this.checkshowdcurrentprogramsRef.current.disabled)
+			this.checkshowdcurrentprogramsRef.current.disabled = false;
+
         const emptyservices = [];
 		this.store.setState({ selecteddate: selDate });
 		this.setState({ selecteddate: selDate, selectedchannelindex: 0,
@@ -1302,10 +1326,13 @@ export default class YleHtml extends Component {
 	showAllDescriptions = (event) => {
 		event.preventDefault();
 		let value = event.target.checked;
-		console.log("showAllDescriptions");
+		if (Config.bDebug)
+			console.log("showAllDescriptions");
 		let bValue = value; // this.state.bDisplayAllDescriptions;
-		console.log("bValue");
-		console.log(bValue);
+		if (Config.bDebug)
+			console.log("bValue");
+		if (Config.bDebug)
+			console.log(bValue);
 		/*
 		if (value === 'on')
 			bValue = true;
@@ -2051,7 +2078,7 @@ export default class YleHtml extends Component {
 		e = e || window.event;
 		let keyCode = e.keyCode || e.which,
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
-
+		if (Config.bDebug)
 			console.log("pressed");
 		if (e.altKey) {		
 			if (Config.bDebug)
@@ -2296,20 +2323,20 @@ export default class YleHtml extends Component {
 						<SwitchCheckbox inputid="checkshowdcurrentprograms"
 						    labeltext="Näytä par'aikaa ja myöhemmät esitettävät" checked={state.bshowdcurrentprograms}
 							onChange={this.showdcurrentprograms} 
-							inputref={this.checkshowdcurrentprogramsRef}
+							propref={this.checkshowdcurrentprogramsRef}
 							 />
 					</Formfield>
 					<Formfield>
 						<SwitchCheckbox  inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions}
 							onChange={this.showAllDescriptions} 
-							ref={this.showAllDescrRef} />
+							propref={this.showAllDescrRef} />
 					</Formfield>
 					<Formfield>
 						<SwitchCheckbox onChange={this.showOneChannel}
 							inputid="checkshowonechannel"
 							labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime}
-							ref={this.showOneChannelRef} />
+							propref={this.showOneChannelRef} />
 					<select tabIndex="0"
 							selectedIndex={selectedchannelindex}
                             disabled={!state.bCheckShowChannelsAtSameTime}
@@ -2360,7 +2387,7 @@ export default class YleHtml extends Component {
 						<SwitchCheckbox inputid="idcheckTableBorders"
 						labeltext="Näytä taulun raamit" checked={state.bShowTableBorder}
 							onChange={this.showTableBorders}
-							ref={this.showTableBordersRef} />
+							propref={this.showTableBordersRef} />
 					</Formfield>
 					<space>          </space>
 					<Formfield>
@@ -2368,7 +2395,7 @@ export default class YleHtml extends Component {
 						labeltext="Näytä elokuvat" 
 							disabled={state.progsource != 'rtv'}
 							onChange={this.showOnlyMovies}
-							inputref={this.checkBoxMovieRef}
+							propref={this.checkBoxMovieRef}
 							checked={state.progsource != 'rtv' && state.bShowOnlyMovies 
 							  || state.progsource == 'rtv' && state.bShowOnlyMovies}
 							 />

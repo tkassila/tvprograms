@@ -39,6 +39,7 @@ export default class Telkku extends Component {
 	_mounted = false;
 	scrollingDlgRef = null;
 	tablCntl = null;
+	showTableBordersRef = null;
 
 	constructor(props)
 	{
@@ -80,6 +81,7 @@ export default class Telkku extends Component {
 		this.selectChannelRef = createRef();	
 		this.scrollingDlgRef  = createRef();
 		this.tablCntl	  = createRef();
+		this.showTableBordersRef =  createRef();
 	 }
 
 	componentDidMount()
@@ -294,8 +296,11 @@ export default class Telkku extends Component {
 		if (childNode1 === null || childNode1 === undefined 
 			|| childNode1 === NaN)
 		{
-			console.log("childNode1");
-			console.log(childNode1);
+			if (Config.bDebug)
+			{
+				console.log("childNode1");
+				console.log(childNode1);
+			}
 			return null;
 		}
 		let nodeValue1 = childNode1.nodeValue;
@@ -361,10 +366,13 @@ export default class Telkku extends Component {
 	showAllDescriptions = (event) => {
 		event.preventDefault();
 		let value = event.target.checked;
-		console.log("showAllDescriptions");
+		if (Config.bDebug)
+			console.log("showAllDescriptions");
 		let bValue = value; // this.state.bDisplayAllDescriptions;
-		console.log("bValue");
-		console.log(bValue);
+		if (Config.bDebug)
+			console.log("bValue");
+		if (Config.bDebug)
+			console.log(bValue);
 		/*
 		if (value === 'on')
 			bValue = true;
@@ -953,9 +961,11 @@ export default class Telkku extends Component {
 		if (path === undefined || path === null || path.length === 0)
 			return null;
 
-		console.log("path");
-		console.log(path);
-
+		if (Config.bDebug)
+		{
+			console.log("path");
+			console.log(path);
+		}
 		let ret = -1;
 		let i = 0, max = path.length;
 		let value, str;
@@ -982,8 +992,11 @@ export default class Telkku extends Component {
 		if (path === undefined || path === null || path.length === 0)
 			return null;
 
-		console.log("path");
-		console.log(path);
+		if (Config.bDebug)
+		{
+			console.log("path");
+			console.log(path);
+		}
 
 		let ret = -1;
 		let i = 0, max = path.length;
@@ -1017,38 +1030,44 @@ export default class Telkku extends Component {
 		e = e || window.event;
 		let keyCode = e.keyCode || e.which,
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
-
-			console.log("pressed");
+			if (Config.bDebug)
+				console.log("pressed");
 		if (e.altKey) {
-			console.log("control key");
-			console.log("e.altKey");
-			console.log(e.altKey);
-			console.log("keyCode");
-			console.log(keyCode);
-			console.log("e.keyCode");
-			console.log(e.keyCode);
-			console.log("e");
-			console.log(e);
+			if (Config.bDebug)
+			{
+				console.log("control key");
+				console.log("e.altKey");
+				console.log(e.altKey);
+				console.log("keyCode");
+				console.log(keyCode);
+				console.log("e.keyCode");
+				console.log(e.keyCode);
+				console.log("e");
+				console.log(e);
+			}
 
 			let row = this.tablCntl.current.rows[1];
 			const cols = row.cells;
 			const currColInd = row.colIndex;
 			const lenCols = cols.length;
 			const currentCol = row.closest('td');
-			console.log("--- row");
-			console.log(row);
-			console.log("--- cols");
-			console.log(cols);
-			console.log("--- lenCols");
-			console.log(lenCols);
-			console.log("--- currColInd");
-			console.log(currColInd);
-			console.log("--- currentCol");
-			console.log(currentCol);
-			
-			console.log("--- this.tablCntl.current");
-			console.log(this.tablCntl.current);
-			
+
+			if (Config.bDebug)
+			{
+				console.log("--- row");
+				console.log(row);
+				console.log("--- cols");
+				console.log(cols);
+				console.log("--- lenCols");
+				console.log(lenCols);
+				console.log("--- currColInd");
+				console.log(currColInd);
+				console.log("--- currentCol");
+				console.log(currentCol);
+				
+				console.log("--- this.tablCntl.current");
+				console.log(this.tablCntl.current);
+			}			
 			let currentColInd = null;
 
 			// .item(0).innerHTML
@@ -1085,8 +1104,11 @@ export default class Telkku extends Component {
 					// document.getElementById("tablecol" +(currentColInd+1)).focus(); 					
 					if (nextcol)
 					{
-						console.log("nextcol");
-						console.log(nextcol);
+						if (Config.bDebug)
+						{
+							console.log("nextcol");
+							console.log(nextcol);
+						}
 						nextcol.focus();
 						// document.getElementById("tablecol" +currentColInd).focus(); 
 					}					
@@ -1228,13 +1250,13 @@ export default class Telkku extends Component {
 
 					<Formfield>
 						<SwitchCheckbox onChange={this.showAllDescriptions}
-							ref={this.showAllDescrRef}
+							propref={this.showAllDescrRef}
 							inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 					</Formfield>
 					<Formfield>
 						<SwitchCheckbox onChange={this.showOneChannel}
-							ref={this.showOneChannelRef}
+							propref={this.showOneChannelRef}
 							inputid="checkshowonechannel"
 						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
 					<select tabIndex="0"
@@ -1298,7 +1320,7 @@ export default class Telkku extends Component {
 					<space>          </space>
 					<Formfield>
 						<SwitchCheckbox nChange={this.showTableBorders}
-							ref={this.showTableBordersRef}
+							propref={this.showTableBordersRef}
 							inputid="checkTableBorders"
 						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
 					</Formfield>

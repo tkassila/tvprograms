@@ -422,9 +422,12 @@ export default class YleMedia extends Component {
 
 	getFetchedDate = () =>
 	{
-		console.log("getFetchedDate");
-		console.log("this.state.selecteddate");
-		console.log(store.getState().selecteddate);
+		if (Config.bDebug)
+		{
+			console.log("getFetchedDate");
+			console.log("this.state.selecteddate");
+			console.log(store.getState().selecteddate);
+		}
 		let today = store.getState().selecteddate;
 		if (typeof today === 'string')
 			today = Date.parse(store.getState().selecteddate);
@@ -467,12 +470,23 @@ export default class YleMedia extends Component {
 		const today = new Date(Date.now())
 		if (selDate.getDate() !== today.getDate())
 		{
-			if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
+			if (this.checkshowdcurrentprogramsRef.value)
+			{
+				this.checkshowdcurrentprogramsRef.current.value = false;
+				this.setState({ bshowdcurrentprograms: false});
+			}
+			this.checkshowdcurrentprogramsRef.current.disabled = true;
+			/*
+						if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
 			{
 				this.checkshowdcurrentprogramsRef.current.MDComponent.checked = false;
 				this.setState({ bshowdcurrentprograms: false});
 			}
+			*/
 		}
+		else
+		if (this.checkshowdcurrentprogramsRef.current.disabled == true)
+			this.checkshowdcurrentprogramsRef.current.disabled = false;
 
         const emptyservices = [];
 		this.setState({ selecteddate: selDate,

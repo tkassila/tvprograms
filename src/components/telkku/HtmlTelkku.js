@@ -313,9 +313,12 @@ export default class HtmlTelkku extends Component {
 
 	getFetchedDate = () =>
 	{
-		console.log("getFetchedDate");
-		console.log("this.state.selecteddate");
-		console.log(this.state.selecteddate);
+		if (Config.bDebug)
+		{
+			console.log("getFetchedDate");
+			console.log("this.state.selecteddate");
+			console.log(this.state.selecteddate);
+		}
 		let today = this.state.selecteddate;
 		if (typeof today === 'string')
 			today = Date.parse(this.state.selecteddate);

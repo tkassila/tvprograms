@@ -9,7 +9,9 @@ export default (url, callback) => {
     var script = document.createElement('script');
     script.src =
       url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
-    console.log("jsonp.js src=" +script.src);
+    
+if(Config.bDebug)
+console.log("jsonp.js src=" +script.src);
     document.body.appendChild(script);
   };
   

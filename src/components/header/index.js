@@ -32,9 +32,15 @@ export default class Header extends Component {
 		super(props);
 		if(Config.bDebug) 
 		{
-			console.log("Header.js");
-			console.log("props");
-			console.log(props);
+			
+if(Config.bDebug)
+console.log("Header.js");
+			
+if(Config.bDebug)
+console.log("props");
+			
+if(Config.bDebug)
+console.log(props);
 		}
 
 		this.store = props.store;

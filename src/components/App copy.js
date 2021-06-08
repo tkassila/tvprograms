@@ -76,10 +76,14 @@ class App extends Component {
       this.setState({ cssPath: "" });
     else
       this.setState({ cssPath: "../" });
-    console.log("cssPath");
-    console.log(this.state.cssPath);
-    console.log("state.cssPath +state.stylePath");
-    console.log(this.state.cssPath +this.state.stylePath);
+
+    if (Config.bDebug)
+    {
+      console.log("cssPath");
+      console.log(this.state.cssPath);
+      console.log("state.cssPath +state.stylePath");
+      console.log(this.state.cssPath +this.state.stylePath);
+    }
     this.forceUpdate();
   }
 

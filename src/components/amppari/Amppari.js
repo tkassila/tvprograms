@@ -140,7 +140,7 @@ export default class Amppari extends Component {
 		// https://www.ampparit.com/tv?aika=paiva&pvm=2021-02-22&sanat=&suodatus=ilmaiset&tyyppi=elokuvat
 		this.fetch_url_ampparissa = Config.http_curlserver + '/ampparissa/tv';
 		this.AmppariException = this.AmppariException.bind(this);
-		location.host
+		// location.host
 		this.showAllDescrRef = createRef();
 		this.showOneChannelRef = createRef();
 		this.selectChannelRef = createRef();
@@ -216,9 +216,11 @@ export default class Amppari extends Component {
 
 	listenerStoreChange2 = (storestate) =>
     {
-        console.log("Amppari listenerStoreChange2");
-        console.log(storestate);
-        
+		if (Config.bDebug)
+		{
+			console.log("Amppari listenerStoreChange2");
+			console.log(storestate);
+		}
         if (storestate === undefined || storestate === null)
         {
             console.log("Amppari listenerStoreChange storestate");
@@ -241,12 +243,12 @@ export default class Amppari extends Component {
 		/*
 		if (this.state.bDisplayAllDescriptions !== bDisplayAllDescriptions )
 		{
-			let value = this.showAllDescrRef.current.MDComponent.checked;
+			let value = this.showAllDescrRef.current.checked;
 			if (!value && bDisplayAllDescriptions)
-				this.showAllDescrRef.current.MDComponent.checked = true;
+				this.showAllDescrRef.current.checked = true;
 			else
 			if (value && !bDisplayAllDescriptions)
-				this.showAllDescrRef.current.MDComponent.checked = false;
+				this.showAllDescrRef.current.checked = false;
 			this.setState({ bDisplayAllDescriptions: bDisplayAllDescriptions,
 			});		
 		}
@@ -1108,6 +1110,7 @@ export default class Amppari extends Component {
 	{
 		event.preventDefault();
 		let dayparameter = event.target.id;
+		let target = event.target;
 		const search = 'dayname_';
 		let ind = dayparameter.indexOf(search);
 		if (ind > -1)
@@ -1117,12 +1120,16 @@ export default class Amppari extends Component {
 		const today = new Date(Date.now())
 		if (day.getDate() !== today.getDate())
 		{
-			if (this.checkshowdcurrentprogramsRef.current.MDComponent.checked)
+			if (this.checkshowdcurrentprogramsRef.current.value)
 			{
-				this.checkshowdcurrentprogramsRef.current.MDComponent.checked = false;
+				this.checkshowdcurrentprogramsRef.current.value = false;
 				this.setState({ bshowdcurrentprograms: false});
 			}
+			this.checkshowdcurrentprogramsRef.current.disabled = true;
 		}
+		else
+		if (this.checkshowdcurrentprogramsRef.current.disabled == true)
+			this.checkshowdcurrentprogramsRef.current.disabled = false;
 		this.setState({selecteddate: day});	
 		this.fetchHtmlAmppariChannels(dayparameter);
 	}
@@ -1190,9 +1197,12 @@ export default class Amppari extends Component {
 	getFetchedDate = () =>
 	{
 
-		console.log("getFetchedDate");
-		console.log("this.state.selecteddate");
-		console.log(this.state.selecteddate);
+		if (Config.bDebug)
+		{
+			console.log("getFetchedDate");
+			console.log("this.state.selecteddate");
+			console.log(this.state.selecteddate);
+		}
 		let today = this.state.selecteddate;
 		if (typeof today === 'string')
 			today = Date.parse(this.state.selecteddate);
@@ -1280,10 +1290,13 @@ export default class Amppari extends Component {
 	showAllDescriptions = (event) => {
 		event.preventDefault();
 		let value = event.target.checked;
-		console.log("showAllDescriptions");
+		if (Config.bDebug)
+			console.log("showAllDescriptions");
 		let bValue = value; // this.state.bDisplayAllDescriptions;
-		console.log("bValue");
-		console.log(bValue);
+		if (Config.bDebug)
+			console.log("bValue");
+		if (Config.bDebug)
+			console.log(bValue);
 		/*
 		if (value === 'on')
 			bValue = true;
@@ -2061,9 +2074,9 @@ export default class Amppari extends Component {
 		{
 			console.log("searchTextFromChannelsClicked 2 ");
 		}
-		let value = this.showAllDescrRef.current.MDComponent.checked;
+		let value = this.showAllDescrRef.current.value;
 		if (!value)
-			this.showAllDescrRef.current.MDComponent.checked = true;
+			this.showAllDescrRef.current.value = true;
 				
 		this.filterWhenUIControlsHasBeenChanged(filtercalled.MAKESEARCH, true);
 		this.setState({ bSearchButtonClicked: true, bDisplayAllDescriptions: true,
@@ -2270,10 +2283,10 @@ export default class Amppari extends Component {
 		}
 
 		let bChange = false;
-		let value = this.showOneChannelRef.current.MDComponent.checked;
+		let value = this.showOneChannelRef.current.checked;
 		if (value)
 		{
-			this.showOneChannelRef.current.MDComponent.checked = false;
+			this.showOneChannelRef.current.checked = false;
 			bChange = true;
 		}
 
@@ -2687,8 +2700,11 @@ export default class Amppari extends Component {
 		if (path === undefined || path === null || path.length === 0)
 			return null;
 
-		console.log("path");
-		console.log(path);
+		if (Config.bDebug)
+		{
+			console.log("path");
+			console.log(path);
+		}
 
 		let ret = -1;
 		let i = 0, max = path.length;
@@ -2715,9 +2731,11 @@ export default class Amppari extends Component {
 	{
 		if (path === undefined || path === null || path.length === 0)
 			return null;
-
-		console.log("path");
-		console.log(path);
+		if (Config.bDebug)
+		{
+			console.log("path");
+			console.log(path);
+		}
 
 		let ret = -1;
 		let i = 0, max = path.length;
@@ -2773,38 +2791,43 @@ export default class Amppari extends Component {
 		e = e || window.event;
 		let keyCode = e.keyCode || e.which,
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
-
-			console.log("pressed");
+			if (Config.bDebug)
+				console.log("pressed");
 		if (e.altKey) {
-			console.log("control key");
-			console.log("e.altKey");
-			console.log(e.altKey);
-			console.log("keyCode");
-			console.log(keyCode);
-			console.log("e.keyCode");
-			console.log(e.keyCode);
-			console.log("e");
-			console.log(e);
+			if (Config.bDebug)
+			{
+				console.log("control key");
+				console.log("e.altKey");
+				console.log(e.altKey);
+				console.log("keyCode");
+				console.log(keyCode);
+				console.log("e.keyCode");
+				console.log(e.keyCode);
+				console.log("e");
+				console.log(e);
+			}
 
 			let row = this.tablCntl.current.rows[1];
 			const cols = row.cells;
 			const currColInd = row.colIndex;
 			const lenCols = cols.length;
 			const currentCol = row.closest('td');
-			console.log("--- row");
-			console.log(row);
-			console.log("--- cols");
-			console.log(cols);
-			console.log("--- lenCols");
-			console.log(lenCols);
-			console.log("--- currColInd");
-			console.log(currColInd);
-			console.log("--- currentCol");
-			console.log(currentCol);
-			
-			console.log("--- this.tablCntl.current");
-			console.log(this.tablCntl.current);
-			
+			if (Config.bDebug)
+			{
+				console.log("--- row");
+				console.log(row);
+				console.log("--- cols");
+				console.log(cols);
+				console.log("--- lenCols");
+				console.log(lenCols);
+				console.log("--- currColInd");
+				console.log(currColInd);
+				console.log("--- currentCol");
+				console.log(currentCol);
+						
+				console.log("--- this.tablCntl.current");
+				console.log(this.tablCntl.current);
+			}			
 			let currentColInd = null;
 
 			// .item(0).innerHTML
@@ -2841,8 +2864,11 @@ export default class Amppari extends Component {
 					// document.getElementById("tablecol" +(currentColInd+1)).focus(); 				
 					if (nextcol)
 					{
-						console.log("nextcol");
-						console.log(nextcol);
+						if (Config.bDebug)
+						{
+							console.log("nextcol");
+							console.log(nextcol);
+						}
 						nextcol.focus();
 						// document.getElementById("tablecol" +(currentColInd+1)).focus(); 
 						// route("#"+nextcol.id);
@@ -2892,7 +2918,7 @@ export default class Amppari extends Component {
 		e = e || window.event;
 		let keyCode = e.keyCode || e.which,
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
-
+		if (Config.bDebug)
 			console.log("pressed");
 		if (e.altKey) {
 			if (Config.bDebug)
@@ -3104,18 +3130,18 @@ export default class Amppari extends Component {
 						    	labeltext="Näytä par'aikaa ja myöhemmät esitettävät" 
 								checked={state.bshowdcurrentprograms}
 								onChange={this.showdcurrentprograms} 
-								inputref={this.checkshowdcurrentprogramsRef}
+								propref={this.checkshowdcurrentprogramsRef}
 							 />
 						</Formfield>
 						<Formfield>
 						<SwitchCheckbox onChange={this.showAllDescriptions}
-							ref={this.showAllDescrRef}
+							propref={this.showAllDescrRef}
 							inputid="checkshowdescribtions"
 						    labeltext="Näytä selitykset" checked={state.bDisplayAllDescriptions} />
 						</Formfield>
 						<Formfield>
 						<SwitchCheckbox onChange={this.showOneChannel}
-							ref={this.showOneChannelRef}
+							propref={this.showOneChannelRef}
 							inputid="checkshowonechannel"
 						    labeltext="Näytä yksi kanava:" checked={state.bCheckShowChannelsAtSameTime} />
 						<select tabIndex="0" lang="fi" 
@@ -3155,7 +3181,7 @@ export default class Amppari extends Component {
 					<space>          </space>
 					<Formfield>
 						<SwitchCheckbox onChange={this.showTableBorders}
-							ref={this.showTableBordersRef}	lang="fi" 						
+							propref={this.showTableBordersRef}	lang="fi" 						
 							inputid="checkTableBorders"
 						    labeltext="Näytä taulun raamit" checked={state.bShowTableBorder} />
 					</Formfield>

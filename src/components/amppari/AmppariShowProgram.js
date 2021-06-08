@@ -137,6 +137,8 @@ function AmppariShowProgram(props)
 	{ 
 		e = e || window.event;
 		let keyCode = e.keyCode || e.which;
+
+        if (Config.bDebug)
 			console.log("pressed");
 			
 			let currentColInd = null;
