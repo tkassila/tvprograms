@@ -34,6 +34,12 @@ export default class Header extends Component {
 		{
 			
 if(Config.bDebug)
+
+if(Config.bDebug)
+
+if(Config.bDebug)
+
+if(Config.bDebug)
 console.log("Header.js");
 			
 if(Config.bDebug)

@@ -11,6 +11,12 @@ export default (url, callback) => {
       url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
     
 if(Config.bDebug)
+
+if(Config.bDebug)
+
+if(Config.bDebug)
+
+if(Config.bDebug)
 console.log("jsonp.js src=" +script.src);
     document.body.appendChild(script);
   };
