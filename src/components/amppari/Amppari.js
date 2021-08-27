@@ -2793,12 +2793,14 @@ export default class Amppari extends Component {
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
 			if (Config.bDebug)
 				console.log("pressed");
-		if (e.altKey) {
+			if (e.shiftKey || e.altKey) {
 			if (Config.bDebug)
 			{
 				console.log("control key");
 				console.log("e.altKey");
 				console.log(e.altKey);
+				console.log("e.shiftKey");
+				console.log(e.shiftKey);
 				console.log("keyCode");
 				console.log(keyCode);
 				console.log("e.keyCode");

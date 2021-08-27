@@ -260,19 +260,38 @@ export default class YleHtml extends Component {
 			arrow = { left: 37, up: 38, right: 39, down: 40 };
 			if (Config.bDebug)
 				console.log("pressed");
-		if (e.altKey) {
-			if (Config.bDebug)
-			{
-				console.log("control key");
-				console.log("e.altKey");
-				console.log(e.altKey);
-				console.log("keyCode");
-				console.log(keyCode);
-				console.log("e.keyCode");
-				console.log(e.keyCode);
-				console.log("e");
-				console.log(e);
-			}
+
+		let firefox = navigator.userAgent.search("Firefox");
+		let isFirefox = this.state.isbrowser.isFirefox;
+		if (Config.bDebug)
+		{
+			console.log("firefox");
+			console.log(isFirefox);
+		}
+		if (Config.bDebug)
+		{
+			console.log("control key");
+			console.log("e.altKey");
+			console.log(e.altKey);
+			console.log("e.altLeft");
+			console.log(e.altLeft);			
+			console.log("e.ctrlKey");
+			console.log(e.ctrlKey);				
+			console.log("e.shiftKey");
+			console.log(e.shiftKey);
+			console.log("keyCode");
+			console.log(keyCode);
+			console.log("e.keyCode");
+			console.log(e.keyCode);
+			console.log("e.originalEvent");
+			console.log(e.originalEvent);
+			console.log("e");
+			console.log(e);
+		}
+
+		if (/* isFirefox && (e.keyCode == 18
+		    /* && e.ctrlKey || */ e.altKey) {
+		//	e.preventDefault();
 
 			let row = this.tablCntl.current.rows[1];
 			const cols = row.cells;
@@ -2415,7 +2434,7 @@ export default class YleHtml extends Component {
 				<div>
 					<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" tabIndex="0">Ohjelmataulukko</h3></div>					
 					{isFirefox ? <div class=" mdc-typography--caption" lang="fi" tabIndex="0" >
-			        Jos käytät firefox selainta (ja ruudunlukuohjelmaa), taulukon näppäinkomennot eivät toimi. 
+			        Jos käytät firefox selainta (ja ruudunlukuohjelmaa), taulukon kanava alt -näppäinkomennot eivät toimi. 
 					Käytä jotain toista selainta. Kiitos.</div> :  <div class=" mdc-typography--caption"><h3 lang="fi" tabIndex="0" >
 					-- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä
 					 alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. 
