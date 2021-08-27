@@ -7,7 +7,7 @@ You can use a mouse or screenreader and some keyboard alt commands to navigate a
 These keyborad combinations do not work with Firefox browser, because on it on impossible to set focus within a web page on a web app!
 
 Ohjelmataulukko
--- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet. Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.
+-- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä ja ohjelmien välillä toimivat myös tab sekä shift-tab näppäimet. Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.
 
 # Developer install
 
