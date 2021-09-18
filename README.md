@@ -1,13 +1,13 @@
 # preact material app: Tv and radio programs on channels
 
-This app is showing finnish tv and radio programs on a browser from different sources. To get json or xml data from servers, it is calling local proxy node server (on port 9090). You can show also descriptions and search a text from chanals or programs. The app is also working with screenreaders.
+This app is showing finnish tv and radio programs on a browser from different sources. To get json or xml data from servers, it is calling local proxy node server (on port 9090). You can show also descriptions and search a text from channels or programs. The app is also working with screenreaders.
 It has two page theme: white and black. It is using bigger fonts.
 
-You can use a mouse ór screenreader and some keyboard alt commands to navigate and set focus inside of local readed programs and channnels on a program table. Those keyboard combinations are: alt+s = next channel, alt+k = prev. channel and alt+o set focus into inside of channel title. You can also set focus "ohjelmataulukko" title, when pressing alt+t. This title is above showen program table.
+You can use a mouse or screenreader and some keyboard alt commands to navigate and set focus inside of local readed programs and channnels on a program table. Those keyboard combinations are: alt+s = next channel (column), alt+k = prev. channel and alt+o set focus into inside of channel title. You can also set focus/move into "ohjelmataulukko" title, when pressing alt+t. This title is above showen program table.
 These keyborad combinations do not work with Firefox browser, because on it on impossible to set focus within a web page on a web app!
 
 Ohjelmataulukko
--- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä toimivat myös tab sekä shift-tab näppäimet. Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.
+-- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä ja ohjelmien välillä toimivat myös tab sekä shift-tab näppäimet. Taulukon yläpuolelle tekstin "Ohjelmataulukko" kohdalle pääsee komennolla alt+t.
 
 # Developer install
 
