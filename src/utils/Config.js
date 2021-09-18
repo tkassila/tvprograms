@@ -4,7 +4,7 @@ import ProxyServerPort from './proxyserverport';
 
 class Config
 {
-    static bDebug = false;
+    static bDebug = true;
    static yleserverurl = 'https://external.api.yle.fi/v1/';
   // static yleserverurl = 'http://localhost:80/yle/';
 
