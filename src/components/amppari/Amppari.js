@@ -1140,6 +1140,9 @@ export default class Amppari extends Component {
 		let plusdate = today;
 		if (plusdaynumber > 0)
 			plusdate = today.add(plusdaynumber, 'days');
+		else
+		if (plusdaynumber < 0)
+			plusdate = today.add(plusdaynumber, 'days');	
 		const ret = plusdate.format("YYYY-MM-DD"); // pvm=2021-02-22
 		return ret;
 	}
@@ -1150,6 +1153,10 @@ export default class Amppari extends Component {
 		let plusdate = today;
 		if (plusdaynumber > 0)
 			plusdate = today.add(plusdaynumber, 'days');
+		else
+		if (plusdaynumber < 0)
+			plusdate = today.add(plusdaynumber, 'days');	
+	
 		const weekday = new Date(plusdate).getDay();
 		let weekdayname = "";
 		switch(weekday)
@@ -3104,6 +3111,41 @@ export default class Amppari extends Component {
 							        onClick={this.onClickSetDateString}>{this.getPlus1Day(13)}</a><space> </space>
 							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(14)} 
 							        onClick={this.onClickSetDateString}>{this.getPlus1Day(14)}</a><br/>
+						</div>
+
+						
+						<p>Aikaisemmat päivät:</p>
+						<div class={style.cardHeader}>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-1)} 
+							      onClick={this.onClickSetDateString}>{this.getPlus1Day(-1)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-2)} 
+							       onClick={this.onClickSetDateString}>{this.getPlus1Day(-2)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(2)} 
+							      onClick={this.onClickSetDateString}>{this.getPlus1Day(-3)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(3)} 
+							         onClick={this.onClickSetDateString}>{this.getPlus1Day(-3)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-4)} 
+							        onClick={this.onClickSetDateString}>{this.getPlus1Day(-4)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-5)} 
+							            onClick={this.onClickSetDateString}>{this.getPlus1Day(-5)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-6)} 
+							         onClick={this.onClickSetDateString}>{this.getPlus1Day(-6)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-7)} 
+							          onClick={this.onClickSetDateString}>{this.getPlus1Day(-7)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-8)} 
+							        onClick={this.onClickSetDateString}>{this.getPlus1Day(-8)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-9)} 
+							            onClick={this.onClickSetDateString}>{this.getPlus1Day(-9)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-10)} 
+							            onClick={this.onClickSetDateString}>{this.getPlus1Day(-10)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-11)} 
+							         onClick={this.onClickSetDateString}>{this.getPlus1Day(-11)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-12)} 
+							         onClick={this.onClickSetDateString}>{this.getPlus1Day(-12)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-13)} 
+							        onClick={this.onClickSetDateString}>{this.getPlus1Day(-13)}</a><space> </space>
+							<a lang="fi" href="." id={'dayname_'+this.getPlus1DayId(-14)} 
+							        onClick={this.onClickSetDateString}>{this.getPlus1Day(-14)}</a><br/>
 						</div>
 						</div>
 					</Card>
