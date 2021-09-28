@@ -31,7 +31,7 @@ export default class HtmlTelkku extends Component {
 		this.state = {
 			errmsg: null,
 			html: null,
-            selecteddate: today,
+            selecteddate: null,
             fetcheditems: [],
             selectedpage: 1,
 			today: new Date(Date.now),
@@ -320,6 +320,9 @@ export default class HtmlTelkku extends Component {
 			console.log(this.state.selecteddate);
 		}
 		let today = this.state.selecteddate;
+		if (today == null || today == undefined)
+			return "";
+
 		if (typeof today === 'string')
 			today = Date.parse(this.state.selecteddate);
 		let days  = today.getDate();

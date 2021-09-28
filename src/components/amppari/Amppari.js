@@ -103,7 +103,7 @@ export default class Amppari extends Component {
 		this.state = {
 			errmsg: null,
 			html: null,
-            selecteddate: today,
+            selecteddate: null,
 			selectedaika: 'paiva',
 			selectedsuodattimet: 'kaikki',
 			selectedtyyppi: 'kaikki',
@@ -1204,6 +1204,9 @@ export default class Amppari extends Component {
 			console.log(this.state.selecteddate);
 		}
 		let today = this.state.selecteddate;
+		if (today == null || today == undefined)
+			return "";
+
 		if (typeof today === 'string')
 			today = Date.parse(this.state.selecteddate);
 		let days  = today.getDate();

@@ -35,7 +35,7 @@ export default class HtmlAmppari extends Component {
         let today = new Date(Date.now());
 		this.state = {
 			errmsg: null,
-		    selecteddate: today,
+		    selecteddate: null,
 			selectedaika: 'paiva',
 			selectedsuodattimet: 'kaikki',
 			selectedtyyppi: 'kaikki',

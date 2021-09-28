@@ -77,7 +77,7 @@ export default class YleMedia extends Component {
 			programs: null,
 			currentDate: Date.now(),
 			services: [],
-			selecteddate: today,
+			selecteddate: null,
 			bShowTableBorder: false,
 			offset: 0,
 			currentservice: null,
@@ -102,7 +102,7 @@ export default class YleMedia extends Component {
 
 		store.setStateNoneCallListeners({ schedules: {}, shedulescount: 0, 
 			shedulescallcount: 0, indService: -1,
-			selecteddate: today });
+			selecteddate: null });
 
 		let callbackName = this.callbackName;
 		let callback = data => this.fetchSchedulesData(data);
@@ -429,6 +429,9 @@ export default class YleMedia extends Component {
 			console.log(store.getState().selecteddate);
 		}
 		let today = store.getState().selecteddate;
+		if (today == null || today == undefined)
+			return "";
+
 		if (typeof today === 'string')
 			today = Date.parse(store.getState().selecteddate);
 		let days  = today.getDate();

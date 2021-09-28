@@ -903,6 +903,9 @@ export default class Telkku extends Component {
 	getFetchedDate = () =>
 	{
 		const today = this.state.today;
+		if (today == null || today == undefined)
+			return "";
+
 		let days  = today.getDate();
 		let month  = today.getMonth()+1;
 		let year  = today.getFullYear();

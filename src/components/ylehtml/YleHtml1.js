@@ -72,7 +72,7 @@ export default class YleHtml1 extends Component {
 			programs: null,
 			currentDate: Date.now(),
 			services: [],
-			selecteddate: today,
+			selecteddate: null,
 			bShowTableBorder: false,
 			offset: 0,
 			currentservice: null,

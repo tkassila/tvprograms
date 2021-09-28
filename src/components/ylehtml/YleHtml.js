@@ -100,7 +100,7 @@ export default class YleHtml extends Component {
 			programs: null,
 			currentDate: Date.now(),
 			services: [],
-			selecteddate: today,
+			selecteddate: null,
 			bShowTableBorder: false,
 			offset: 0,
 			currentservice: null,
@@ -141,7 +141,7 @@ export default class YleHtml extends Component {
 
 		this.store.setStateNoneCallListeners({ schedules: {}, shedulescount: 0, 
 			shedulescallcount: 0, indService: -1,
-			selecteddate: today });
+			selecteddate: null });
 
 		this.fetch_url_audio = Config.http_curlserver + '/yleradio_opas/:';
 		this.fetch_url_tv = Config.http_curlserver + '/yletv_opas/:';
@@ -1038,6 +1038,9 @@ export default class YleHtml extends Component {
 			console.log(this.store.getState().selecteddate);
 		}
 		let today = this.store.getState().selecteddate;
+		if (today == null || today == undefined)
+			return "";
+			
 		if (typeof today === 'string')
 			today = Date.parse(today);
 		let days  = today.getDate();
