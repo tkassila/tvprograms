@@ -3064,17 +3064,6 @@ export default class Amppari extends Component {
 			<div class={style.cardHeader} onKeyUp={this.altPlusKeyUpProgramHeader}>
 				<h1 tabIndex="0" lang="fi" >Amppari {this.getFetchedDate()}</h1>
 				<Card>
-					<div tabIndex="0" lang="fi" class={style.cardHeader}>
-						Valitse seuraavista:
-                    </div>
-					<div class={style.cardHeader}>
-						<a id="aikalink_nyt" lang="fi" href="." onClick={this.onClickSelectedAika}>Nyt ja seuraavaksi</a><space> </space>
-						<a id="aikalink_tulevat" lang="fi" href="." onClick={this.onClickSelectedAika}>Tulevat</a><space> </space>
-						<a id="aikalink_paiva" lang="fi" href="." onClick={this.onClickSelectedAika}>Koko päivä</a><space> </space>
-						<a id="aikalink_ilta" lang="fi" href="." onClick={this.onClickSelectedAika}>Ilta (17-22)</a><space> </space>
-						<a id="aikalink_yo" lang="fi" href="." onClick={this.onClickSelectedAika}>Yö (22-01)</a><space> </space>
-						<br/>
-                    </div>
 
 					<div class={style.cardHeader}>
 						<div lang="fi" tabIndex="0" >
