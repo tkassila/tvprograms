@@ -171,9 +171,6 @@ console.log(props);
 				<TopAppBar className="topappbar">	
 					<TopAppBar.Row>
 						<TopAppBar.Section align-start>
-							<TopAppBar.Icon menu onClick={this.openDrawer}>
-							menu
-							</TopAppBar.Icon>
 							<TopAppBar.Title tabIndex="0" >TV ohjelmat</TopAppBar.Title>
 							
 							<div role="radiogroup" aria-labelledby="idprogramdatasource"
