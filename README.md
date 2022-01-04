@@ -1,5 +1,7 @@
 # preact material app: Tv and radio programs on channels
 
+Smaller application size is on: https://github.com/tkassila/tvprograms2.git
+
 This app is showing finnish tv and radio programs on a browser from different sources. To get json or xml data from servers, it is calling local proxy node server (on port 9090). You can show also descriptions and search a text from channels or programs. The app is also working with screenreaders.
 It has two page theme: white and black. It is using bigger fonts.
 
