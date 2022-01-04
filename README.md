@@ -43,6 +43,8 @@ Ohjelmataulukko
 
 Super performant `Material` app for preact world using [preact-material-components](https://github.com/prateekbh/preact-material-components)
 
+V. 1.5 has been updated. That is more updated software: preact-cli 3.3.3 and preact 10.6.4.
+
 ## Developer PREACT-CLI Commands
 
 ``` bash
