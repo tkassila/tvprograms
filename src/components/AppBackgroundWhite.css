@@ -34,15 +34,8 @@ page--dark {
 }
 
 :root {
-	background: black; 
-	background-color: black; 
-	padding: 0;
-	margin: 0;
-}
-
-:root--dark {
-	background: black; 
-	background-color: black; 
+	background: white;
+	background-color: white;
 	padding: 0;
 	margin: 0;
 }

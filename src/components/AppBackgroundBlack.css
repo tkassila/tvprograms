@@ -3,8 +3,8 @@ html {
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background: white; 
-	background-color: white; 
+	background: black; 
+	background-color: black; 
 	font-family: 'Helvetica Neue', arial, sans-serif;
 	font-weight: 400;
 	color: #444;
@@ -20,8 +20,8 @@ page--dark {
 }
 
 page {
-	background: white; 
-	background-color: white; 
+	background: black; 
+	background-color: black; 
 	padding: 0;
 	margin: 0;
 }
@@ -34,13 +34,6 @@ page--dark {
 }
 
 :root {
-	background: black; 
-	background-color: black; 
-	padding: 0;
-	margin: 0;
-}
-
-:root--dark {
 	background: black; 
 	background-color: black; 
 	padding: 0;
@@ -63,8 +56,8 @@ html--dark {
 
 body {
 	min-height: 100%;
-	background: white; 
-	background-color: white;
+	background: black; 
+	background-color: black;
 }
 
 /* fallback */

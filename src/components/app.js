@@ -104,6 +104,22 @@ export default class App extends Component {
 			case '/htmlamppari': this.currentProgsourceCntrl = this.ctrlHtmlAmppariRef; break;
 			default: this.currentProgsourceCntrl = this.ctrlYleRef; break;
 		}  
+
+		if (this.state.themevalue.trim() == '')
+		{
+//				import('./App.css');
+			import('./AppBackgroundWhite.css');
+	//      document.body.style.display = "background-color: white<;";
+			// document.html.style.display = "background-color: white;";
+		}
+		else			
+		{
+//				import('./App.css');
+			import('./AppBackgroundBlack.css');
+	//		document.body.style.display = "background-color: black<;";
+		//	document.body.style.display = "background-color: green; min-height: 100%;";
+			// document.html.style.display = "background-color: black;";
+		}
 		this.setState({
 			currentUrl: e.url
 		});
