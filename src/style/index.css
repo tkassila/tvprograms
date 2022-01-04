@@ -1,14 +1,21 @@
-html, body {
+html {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background: #FAFAFA;
+	background: black; 
 	font-family: 'Helvetica Neue', arial, sans-serif;
 	font-weight: 400;
 	color: #444;
+	min-height: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	min-height: 100%;
+	background: black; 
+	background-color: black;
 }
 
 /* fallback */
