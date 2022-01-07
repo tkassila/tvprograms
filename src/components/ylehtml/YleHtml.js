@@ -2240,7 +2240,13 @@ export default class YleHtml extends Component {
 			
 		const darkstyle = props.themevalue;
 
-		let isFirefox = state.isbrowser.isFirefox;
+		let isFirefox = this.state.isbrowser.isFirefox;
+		if (Config.bDebug)
+		{
+			console.log("firefox 2");
+			console.log(isFirefox);
+		}
+
         // class="mdc-card"
 		// class={"mdc-theme" +darkstyle}
 
@@ -2492,9 +2498,9 @@ export default class YleHtml extends Component {
 				<section>
 				<div>
 					<div class=" mdc-typography--caption"><h3 id="idprogramtableh3" tabIndex="0">Ohjelmataulukko</h3></div>					
-					{isFirefox ? <div class=" mdc-typography--caption" lang="fi" tabIndex="0" >
+					{isFirefox ? <div class=" mdc-typography--caption" lang="fi" tabIndex="0" ><h3 lang="fi" tabIndex="0" >
 			        Jos käytät firefox selainta (ja ruudunlukuohjelmaa), taulukon kanava alt -näppäinkomennot eivät toimi. 
-					Käytä jotain toista selainta. Kiitos.</div> :  <div class=" mdc-typography--caption"><h3 lang="fi" tabIndex="0" >
+					Käytä jotain toista selainta. Kiitos.</h3></div> :  <div class=" mdc-typography--caption"><h3 lang="fi" tabIndex="0" >
 					-- Ohjelmataulukko, liikutaan hiirellä tai taulukon sisällä seuraavilla näppäimillä
 					 alt+s = seuraava kanava, alt+k = edellinen kanava sekä alt+o = kanavan ohjelmiin, otsakkeeseen. 
 					 Ohjelman kuvailun saa näkymään tab näppäimellä ja enterillä tai hiirenklikkauksella. Taulukon sisällä toimivat myös 

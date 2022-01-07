@@ -107,8 +107,12 @@ export default class App extends Component {
 
 		if (this.state.themevalue.trim() == '')
 		{
-//				import('./App.css');
-			import('./AppBackgroundWhite.css');
+			// import('./App.css');
+//			import('./AppBackgroundWhite.css');
+		//	let sheet = document.styleSheets[0];
+		//	sheet.insertRule(":root{--blue:#4444FF}");
+		//	document.body.style.height = document.getElementById("page").height;
+		//	document.body.style.paddingBottom = document.getElementById("page").height;
 	//      document.body.style.display = "background-color: white<;";
 			// document.html.style.display = "background-color: white;";
 		}
@@ -116,6 +120,11 @@ export default class App extends Component {
 		{
 //				import('./App.css');
 			import('./AppBackgroundBlack.css');
+			//let sheet = document.styleSheets[0];
+			// sheet.insertRule(":root{--blue:#4444FF}");
+			//document.body.style.height = document.getElementById("page").clientHeight + 400 + 'px';
+		//	document.body.style.height = document.getElementById("page").height;
+		//	document.body.style.paddingBottom = document.getElementById("page").height;
 	//		document.body.style.display = "background-color: black<;";
 		//	document.body.style.display = "background-color: green; min-height: 100%;";
 			// document.html.style.display = "background-color: black;";
